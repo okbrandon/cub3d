@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/09/23 15:25:02 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:36:29 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "../mlx/mlx.h"
 # include <stdio.h>
 # include <math.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <errno.h>
 
 # define RED 			"\033[0;31m"
 # define PURPLE 		"\033[38;5;141m"
@@ -27,8 +30,11 @@
 # define RESET 			"\033[0m"
 # define BOLD 			"\033[1m"
 
+# define TRUE			1
+# define FALSE			0
+
 # define WIN_WIDTH		1280
-# define WIN_HEIGHT		720
+# define WIN_HEIGHT		800
 # define MAP_WIDTH		24
 # define MAP_HEIGHT		24
 
@@ -44,15 +50,17 @@
 
 typedef struct s_player
 {
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	double			old_dir_x;
+	double			old_plane_x;
 }				t_player;
 
-typedef struct s_cub
+typedef struct s_mlx
 {
 	void			*mlx;
 	void			*window;
@@ -61,7 +69,76 @@ typedef struct s_cub
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
+}			t_mlx;
+
+typedef struct s_map
+{
+	int				width;
+	int				height;
+	char			**matrix;
+}				t_map;
+
+typedef struct s_textures
+{
+	int	south;
+	int	north;
+	int	east;
+	int	west;
+}			t_textures;
+
+typedef struct s_raycast
+{
+	int		wall_hit;
+	int		side_hit;
+	int		line_height;
+	int		draw_from;
+	int		draw_to;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+}			t_raycast;
+
+typedef struct s_cub
+{
+	t_mlx			mlx;
 	t_player		player;
+	t_map			map;
+	t_textures		textures;
+	t_raycast		raycast;
+	char			*filepath;
 }				t_cub;
+
+/* ft_initializer.c */
+t_cub	*ft_init_cub(char *filepath);
+
+/* ft_raycaster.c */
+void	ft_raycast(t_cub *cub);
+
+/* ft_drawerc.c */
+void	ft_draw_textures(t_cub *cub, int x);
+
+/* ft_args_checker.c */
+void	ft_check_args(int argc, char **argv);
+
+/* ft_key_handler.c */
+int		ft_key_press_handler(int keycode, t_cub *cub);
+
+/* ft_mlx_utils.c */
+int		ft_img_renderer(t_cub *cub);
+void	ft_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+int		ft_to_trgb(int t, int r, int g, int b);
+
+/* ft_other_utils.c */
+double	ft_abs(double x);
+void	ft_error(char *message);
+int		ft_close(t_cub *cub);
 
 #endif

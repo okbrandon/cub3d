@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/09/22 22:03:58 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/14 12:48:03 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,13 @@ NAME			= cub3d
 
 SRC_DIR			= ./srcs/
 SRCS			= cub3d.c \
+				  ft_args_checker.c \
+				  ft_drawer.c \
+				  ft_initializer.c \
+				  ft_key_handler.c \
+				  ft_mlx_utils.c \
+				  ft_other_utils.c \
+				  ft_raycaster.c \
 
 LIBFT_LIB		= libft/libft.a
 LIBFT_LIB_DIR	= libft
