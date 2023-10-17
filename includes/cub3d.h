@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/14 19:36:29 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:46:24 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define KEY_RIGHT		2
 # define KEY_ROT_LEFT	123
 # define KEY_ROT_RIGHT	124
+# define KEY_ESCAPE		53
 
 # define MOVE_SPEED		0.125
 # define ROT_SPEED		0.075
