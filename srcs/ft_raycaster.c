@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycaster.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/14 19:36:46 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:29:24 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ static void	ft_init_ray_directions(t_cub *cub, int x)
 		(2 * x / (double)WIN_WIDTH - 1);
 	ray->map_x = (int) cub->player.pos_x;
 	ray->map_y = (int) cub->player.pos_y;
-	ray->delta_dist_x = (ray->ray_dir_x == 0) ? 1e30 : ft_abs(1 / ray->ray_dir_x);
-	ray->delta_dist_y = (ray->ray_dir_y == 0) ? 1e30 : ft_abs(1 / ray->ray_dir_y);
+	if (ray->ray_dir_x == 0)
+		ray->delta_dist_x = 1e30;
+	else
+		ray->delta_dist_x = ft_abs(1 / ray->ray_dir_x);
+	if (ray->ray_dir_y == 0)
+		ray->delta_dist_y = 1e30;
+	else
+		ray->delta_dist_y = ft_abs(1 / ray->ray_dir_y);
 }
 
 static void	ft_init_dda_algorithm(t_cub *cub)
@@ -32,7 +38,7 @@ static void	ft_init_dda_algorithm(t_cub *cub)
 	t_raycast	*ray;
 
 	ray = &cub->raycast;
-	if(ray->ray_dir_x < 0)
+	if (ray->ray_dir_x < 0)
 	{
 		ray->step_x = -1;
 		ray->side_dist_x = (cub->player.pos_x - ray->map_x) * ray->delta_dist_x;
@@ -40,9 +46,10 @@ static void	ft_init_dda_algorithm(t_cub *cub)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - cub->player.pos_x) * ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - cub->player.pos_x)
+			* ray->delta_dist_x;
 	}
-	if(ray->ray_dir_y < 0)
+	if (ray->ray_dir_y < 0)
 	{
 		ray->step_y = -1;
 		ray->side_dist_y = (cub->player.pos_y - ray->map_y) * ray->delta_dist_y;
@@ -50,7 +57,8 @@ static void	ft_init_dda_algorithm(t_cub *cub)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - cub->player.pos_y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - cub->player.pos_y)
+			* ray->delta_dist_y;
 	}
 }
 
@@ -62,7 +70,7 @@ void	ft_apply_dda_algorithm(t_cub *cub)
 	ray->wall_hit = 0;
 	while (!ray->wall_hit)
 	{
-		if(ray->side_dist_x < ray->side_dist_y)
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
@@ -74,7 +82,7 @@ void	ft_apply_dda_algorithm(t_cub *cub)
 			ray->map_y += ray->step_y;
 			ray->side_hit = 1;
 		}
-		if(cub->map.matrix[ray->map_x][ray->map_y] != '0')
+		if (cub->map.matrix[ray->map_x][ray->map_y] != '0')
 			ray->wall_hit = 1;
 	}
 	if (ray->side_hit == 0)

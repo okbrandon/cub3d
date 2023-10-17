@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initializer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/14 19:33:21 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:30:20 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static t_mlx	ft_init_mlx(char *filepath)
 {
 	t_mlx	mlx;
 	char	*title;
-	
+
 	title = ft_strjoin("bsoubaig & evmorvan's cub3D - ", filepath);
 	if (!title)
 		ft_error("title malloc failed");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_args_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:03:18 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/13 19:05:40 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:30:37 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

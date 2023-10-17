@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:01:19 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/14 11:11:58 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:30:42 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	main(int argc, char **argv) {
+int	main(int argc, char **argv)
+{
 	t_cub		*cub;
 
 	ft_check_args(argc, argv);
