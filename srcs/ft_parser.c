@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/18 18:26:05 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:54:14 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,15 @@ void	parse_color_lines(char *line, t_cub *cub)
 	if (line[0] == 'F')
 	{
 		sscanf(line, "F %d,%d,%d", &r, &g, &b);
+		if (ft_is_valid_rgb(r, g, b) == FALSE)
+			ft_error("color value must be between 0 and 255");
 		cub->textures.floor = ft_to_trgb(0, r, g, b);
 	}
 	else if (line[0] == 'C')
 	{
 		sscanf(line, "C %d,%d,%d", &r, &g, &b);
+		if (ft_is_valid_rgb(r, g, b) == FALSE)
+			ft_error("color value must be between 0 and 255");
 		cub->textures.ceiling = ft_to_trgb(0, r, g, b);
 	}
 }
@@ -124,7 +128,6 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
 	j = 0;
 	while (sscanf(map_str, "%1023[^\n]\n%n", line, &i) == 1)
 	{
-		printf("SSF%s\n", line);
 		if (line[0] == 'N' || line[0] == 'S' || line[0] == 'W'
 			|| line[0] == 'E')
 			parse_texture_lines(line, cub);

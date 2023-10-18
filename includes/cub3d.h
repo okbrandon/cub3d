@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 18:17:00 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:52:42 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,11 @@ double	ft_abs(double x);
 void	ft_error(char *message);
 int		ft_close(t_cub *cub);
 
-/* ft_parsing_utils.c */
-int		ft_is_valid_rgb(char *rgb);
+/* ft_parser.c */
 t_map	ft_unsafe_parse(t_cub *cub, char *map_str);
+
+/* ft_parser_utils.c */
+int		ft_is_valid_rgb(int r, int g, int b);
 
 /* ft_sscanf.c */
 int		ft_sscanf(const char *str, const char *format, ...);
