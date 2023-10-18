@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 10:53:28 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:16:47 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,22 +105,6 @@ static void	ft_calc_line_height(t_cub *cub)
 		ray->draw_to = WIN_HEIGHT - 1;
 }
 
-static void	ft_floorcast(t_cub *cub, int x)
-{
-	float	ds;
-	int		y;
-
-	ds = ((float)WIN_HEIGHT / 2) - ((float)cub->raycast.line_height / 2);
-	y = -1;
-	while (++y < WIN_HEIGHT)
-	{
-		if (y < ds)
-			ft_mlx_pixel_put(cub, x, y, cub->textures.ceiling);
-		else if (y >= ds + cub->raycast.line_height)
-			ft_mlx_pixel_put(cub, x, y, cub->textures.floor);
-	}
-}
-
 void	ft_raycast(t_cub *cub)
 {
 	int	x;
@@ -133,6 +117,5 @@ void	ft_raycast(t_cub *cub)
 		ft_apply_dda_algorithm(cub);
 		ft_calc_line_height(cub);
 		ft_draw_textures(cub, x);
-		ft_floorcast(cub, x);
 	}
 }
