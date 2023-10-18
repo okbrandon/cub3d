@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:36:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/14 19:18:54 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:46:16 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ static void	ft_move_rotate(int keycode, t_cub *cub)
 
 int	ft_key_press_handler(int keycode, t_cub *cub)
 {
+	if (keycode == KEY_ESCAPE)
+		ft_close(cub);
 	ft_move_up_down(keycode, cub);
 	ft_move_left_right(keycode, cub);
 	ft_move_rotate(keycode, cub);

@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 10:53:44 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:00:46 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define KEY_RIGHT		2
 # define KEY_ROT_LEFT	123
 # define KEY_ROT_RIGHT	124
+# define KEY_ESCAPE		53
 
 # define MOVE_SPEED		0.125
 # define ROT_SPEED		0.075
