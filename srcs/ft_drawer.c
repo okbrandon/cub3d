@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:37:43 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 11:25:22 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:32:27 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,10 @@ static void	ft_draw_vert_line(t_cub *cub, int x, t_vector vector, int color)
 	while (++y < WIN_HEIGHT)
 	{
 		if (y < (int)vector.x)
-			ft_mlx_pixel_put(cub, x, y, ft_to_trgb(0, 0, 0, 0));
+			ft_mlx_pixel_put(cub, x, y, cub->textures.ceiling);
 		else if (y >= (int)vector.x && y <= (int)vector.y)
 			ft_mlx_pixel_put(cub, x, y, color);
 		else
-			ft_mlx_pixel_put(cub, x, y, ft_to_trgb(0, 0, 0, 0));
-	}
-}
-
-static void	ft_draw_floor_and_ceiling(t_cub *cub, int x)
-{
-	float	ds;
-	int		y;
-
-	ds = ((float)WIN_HEIGHT / 2) - ((float)cub->raycast.line_height / 2);
-	y = -1;
-	while (++y < WIN_HEIGHT)
-	{
-		if (y < ds)
-			ft_mlx_pixel_put(cub, x, y, cub->textures.ceiling);
-		else if (y >= ds + cub->raycast.line_height)
 			ft_mlx_pixel_put(cub, x, y, cub->textures.floor);
 	}
 }
@@ -64,5 +48,4 @@ void	ft_draw_textures(t_cub *cub, int x)
 		else
 			ft_draw_vert_line(cub, x, vector, cub->textures.north);
 	}
-	ft_draw_floor_and_ceiling(cub, x);
 }
