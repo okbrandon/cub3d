@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 11:22:44 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:17:00 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,16 @@ typedef struct s_map
 
 typedef struct s_textures
 {
-	int	south;
-	int	north;
-	int	east;
-	int	west;
-	int	floor;
-	int	ceiling;
+	int		south;
+	int		north;
+	int		east;
+	int		west;
+	char	*tx_south;
+	char	*tx_north;
+	char	*tx_east;
+	char	*tx_west;
+	int		floor;
+	int		ceiling;
 }			t_textures;
 
 typedef struct s_raycast
@@ -149,5 +153,12 @@ int		ft_to_trgb(int t, int r, int g, int b);
 double	ft_abs(double x);
 void	ft_error(char *message);
 int		ft_close(t_cub *cub);
+
+/* ft_parsing_utils.c */
+int		ft_is_valid_rgb(char *rgb);
+t_map	ft_unsafe_parse(t_cub *cub, char *map_str);
+
+/* ft_sscanf.c */
+int		ft_sscanf(const char *str, const char *format, ...);
 
 #endif

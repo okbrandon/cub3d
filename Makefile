@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/14 12:48:03 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/18 16:39:37 by evmorvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,9 @@ SRCS			= cub3d.c \
 				  ft_mlx_utils.c \
 				  ft_other_utils.c \
 				  ft_raycaster.c \
+				  ft_parser.c \
+				  ft_parser_utils.c \
+				  ft_sscanf.c \
 
 LIBFT_LIB		= libft/libft.a
 LIBFT_LIB_DIR	= libft
@@ -42,7 +45,7 @@ OBJ_DIR			= ./objs/
 OBJS			= ${addprefix ${OBJ_DIR}, ${SRCS:.c=.o}}
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -arch x86_64 -Imlx -I $(LIBFT_LIB_DIR)/includes/
+CFLAGS			= -Wall -Wextra -Werror -arch x86_64 -g -Imlx -I $(LIBFT_LIB_DIR)/includes/
 RM				= rm -rf
 
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
