@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/18 18:20:14 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:26:05 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
     map.matrix = malloc(sizeof(char *) * map.height);
 	init_textures(cub);
 	j = 0;
-	// consume line by line
 	while (sscanf(map_str, "%1023[^\n]\n%n", line, &i) == 1)
 	{
 		printf("SSF%s\n", line);

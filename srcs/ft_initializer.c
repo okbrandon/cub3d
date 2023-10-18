@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 18:22:45 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:36:50 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,52 @@
  * EAST: dir_x = 1, dir_y = 0, plane_x = 0, plane_y = 0.66;
  * WEST: dir_x = -1, dir_y = 0, plane_x = 0, plane_y = -0.66;
  */
-static t_player	ft_init_player(void)
+static t_player	ft_init_player(t_map map)
 {
 	t_player	player;
+	int			i;
+	int			j;
 
-	player.pos_x = 2;
-	player.pos_y = 2;
-	player.dir_x = 0;
-	player.dir_y = -1;
-	player.plane_x = 0.66;
-	player.plane_y = 0;
+	i = 0;
+	while (i < map.height -1)
+	{
+		j = 0;
+		while (j < map.width- 1)
+		{
+			if (map.matrix[i][j] == 'N')
+			{
+				player.dir_x = 0;
+				player.dir_y = -1;
+				player.plane_x = 0.66;
+				player.plane_y = 0;
+			}
+			else if (map.matrix[i][j] == 'S')
+			{
+				player.dir_x = 0;
+				player.dir_y = 1;
+				player.plane_x = -0.66;
+				player.plane_y = 0;
+			}
+			else if (map.matrix[i][j] == 'E')
+			{
+				player.dir_x = 1;
+				player.dir_y = 0;
+				player.plane_x = 0;
+				player.plane_y = 0.66;
+			}
+			else if (map.matrix[i][j] == 'W')
+			{
+				player.dir_x = -1;
+				player.dir_y = 0;
+				player.plane_x = 0;
+				player.plane_y = -0.66;
+			}
+			player.pos_x = j - 0.5;
+			player.pos_y = i - 0.5;
+			j++;
+		}
+		i++;
+	}
 	player.old_dir_x = 0;
 	player.old_plane_x = 0;
 	return (player);
@@ -66,8 +102,6 @@ static t_textures	ft_init_textures(void)
 	textures.north = ft_to_trgb(0, 0, 255, 0); // green
 	textures.east = ft_to_trgb(0, 0, 0, 255); // blue
 	textures.west = ft_to_trgb(0, 255, 255, 255); // white
-	textures.floor = ft_to_trgb(0, 125, 125, 125); // grey
-	textures.ceiling = ft_to_trgb(0, 51, 153, 255); // sky blue
 	return (textures);
 }
 
@@ -101,10 +135,10 @@ t_cub	*ft_init_cub(char *filepath)
 	cub = ft_calloc(1, sizeof(t_cub));
 	if (!cub)
 		ft_error("struct cub3d malloc failed");
-	cub->player = ft_init_player();
 	cub->mlx = ft_init_mlx(filepath);
 	cub->textures = ft_init_textures();
 	cub->map = ft_unsafe_parse(cub, filepath);
+	cub->player = ft_init_player(cub->map);
 	cub->raycast = ft_init_raycast();
 	cub->filepath = filepath;
 	return (cub);
