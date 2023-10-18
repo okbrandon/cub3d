@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/18 18:54:14 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:04:13 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
 	t_map	map;
 
 	map_str = get_file_content(map_str);
-	map.width = 22;
-	map.height = 22;
+	map.width = 21;
+	map.height = 21;
     map.matrix = malloc(sizeof(char *) * map.height);
 	init_textures(cub);
 	j = 0;
@@ -137,5 +137,6 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
 			parse_map_lines(line, &map, &j);
 		map_str += i;
 	}
+	ft_is_map_valid(map);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 18:36:50 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:59:21 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static t_player	ft_init_player(t_map map)
 	int			j;
 
 	i = 0;
-	while (i < map.height -1)
+	while (i < map.height)
 	{
 		j = 0;
-		while (j < map.width- 1)
+		while (j < map.width)
 		{
 			if (map.matrix[i][j] == 'N')
 			{
