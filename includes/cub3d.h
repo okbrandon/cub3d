@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/14 19:36:29 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:53:44 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct s_textures
 	int	north;
 	int	east;
 	int	west;
+	int	floor;
+	int	ceiling;
 }			t_textures;
 
 typedef struct s_raycast

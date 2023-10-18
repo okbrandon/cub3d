@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initializer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/17 14:30:20 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:53:33 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static t_textures	ft_init_textures(void)
 	textures.north = ft_to_trgb(0, 0, 255, 0); // green
 	textures.east = ft_to_trgb(0, 0, 0, 255); // blue
 	textures.west = ft_to_trgb(0, 255, 255, 255); // white
+	textures.floor = ft_to_trgb(0, 125, 125, 125); // grey
+	textures.ceiling = ft_to_trgb(0, 51, 153, 255); // sky blue
 	return (textures);
 }
 
