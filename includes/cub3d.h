@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 11:00:46 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:22:44 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@
 
 # define MOVE_SPEED		0.125
 # define ROT_SPEED		0.075
+
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}				t_vector;
 
 typedef struct s_player
 {
