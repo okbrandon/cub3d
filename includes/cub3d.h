@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/19 13:56:33 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:34:30 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,6 @@ typedef struct s_map
 
 typedef struct s_textures
 {
-	int		south;
-	int		north;
-	int		east;
-	int		west;
 	t_mlx	*mlx_textures;
 	int		floor;
 	int		ceiling;

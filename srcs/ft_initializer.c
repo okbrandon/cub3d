@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/19 12:01:42 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:34:50 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,9 @@ static t_textures	ft_init_textures(void)
 {
 	t_textures	textures;
 
-	textures.south = ft_to_trgb(0, 255, 0, 0); // red
-	textures.north = ft_to_trgb(0, 0, 255, 0); // green
-	textures.east = ft_to_trgb(0, 0, 0, 255); // blue
-	textures.west = ft_to_trgb(0, 255, 255, 255); // white
+	textures.mlx_textures = NULL;
+	textures.ceiling = 0;
+	textures.floor = 0;
 	return (textures);
 }
 
