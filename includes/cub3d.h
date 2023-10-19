@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/19 12:20:42 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:49:17 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,7 @@ typedef struct s_textures
 	int		north;
 	int		east;
 	int		west;
-	char	*tx_south;
-	char	*tx_north;
-	char	*tx_east;
-	char	*tx_west;
+	t_mlx	*mlx_textures;
 	int		floor;
 	int		ceiling;
 }			t_textures;
