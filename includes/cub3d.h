@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 19:04:02 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:20:42 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@
 
 # define WIN_WIDTH		1280
 # define WIN_HEIGHT		800
-# define MAP_WIDTH		24
-# define MAP_HEIGHT		24
+
+# define TEX_WIDTH		64
+# define TEX_HEIGHT		64
 
 # define KEY_FORWARD	13
 # define KEY_BACKWARD	1
@@ -110,6 +111,11 @@ typedef struct s_raycast
 	int		map_y;
 	int		step_x;
 	int		step_y;
+	int		tex_x;
+	int		tex_y;
+	double	tex_step;
+	double	tex_pos;
+	double	tex_wall_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	double	side_dist_x;
