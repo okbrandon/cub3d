@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:25:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/17 14:29:44 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:42:40 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ void	ft_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 int	ft_to_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	ft_get_pixel_color(t_mlx *mlx, int x, int y)
+{
+	char	*dst;
+
+	dst = mlx->addr + (y * mlx->line_length + x
+			* (mlx->bits_per_pixel / 8));
+	return (*(unsigned int *) dst);
 }
 
 int	ft_img_renderer(t_cub *cub)

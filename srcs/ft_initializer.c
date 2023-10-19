@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initializer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 18:59:21 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:01:42 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,11 @@ static t_raycast	ft_init_raycast(void)
 	ray.draw_to = 0;
 	ray.map_x = 0;
 	ray.map_y = 0;
+	ray.tex_x = 0;
+	ray.tex_y = 0;
+	ray.tex_step = 0;
+	ray.tex_pos = 0;
+	ray.tex_wall_x = 0;
 	ray.side_dist_x = 0;
 	ray.side_dist_y = 0;
 	ray.delta_dist_x = 0;

@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/19 13:49:17 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:56:33 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@
 
 # define TEX_WIDTH		64
 # define TEX_HEIGHT		64
+
+# define DIR_NORTH		0
+# define DIR_SOUTH		1
+# define DIR_WEST		2
+# define DIR_EAST		3
 
 # define KEY_FORWARD	13
 # define KEY_BACKWARD	1
@@ -149,6 +154,7 @@ int		ft_key_press_handler(int keycode, t_cub *cub);
 
 /* ft_mlx_utils.c */
 int		ft_img_renderer(t_cub *cub);
+int		ft_get_pixel_color(t_mlx *mlx, int x, int y);
 void	ft_mlx_pixel_put(t_cub *cub, int x, int y, int color);
 int		ft_to_trgb(int t, int r, int g, int b);
 
