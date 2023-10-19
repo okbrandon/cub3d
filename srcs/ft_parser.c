@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/18 19:04:13 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:40:55 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,35 +52,57 @@ char	*get_file_content(char *path)
 
 void	init_textures(t_cub *cub)
 {
-	cub->textures.tx_east = NULL;
-	cub->textures.tx_west = NULL;
-	cub->textures.tx_north = NULL;
-	cub->textures.tx_south = NULL;
+	cub->textures.mlx_textures = malloc(sizeof(t_mlx) * 5);
 	cub->textures.ceiling = 0;
 	cub->textures.floor = 0;
 }
 
+void	path_to_texture(t_cub *cub, int dir, char *path)
+{
+	void	*image;
+	int		height;
+	int		width;
+
+	height = 64;
+	width = 64;
+	image = mlx_xpm_file_to_image(cub->mlx.mlx, path, &width, &height);
+	if (image == NULL)
+		ft_error("texture not found");
+	cub->textures.mlx_textures[dir].img = image;
+	cub->textures.mlx_textures[dir].addr = mlx_get_data_addr(image, \
+		&cub->textures.mlx_textures[dir].bits_per_pixel, \
+		&cub->textures.mlx_textures[dir].line_length, \
+		&cub->textures.mlx_textures[dir].endian);
+	if (!cub->textures.mlx_textures[dir].addr)
+		ft_error("mlx_get_data_addr failed");
+	free(path);
+}
+
+// Replace with constants
 void	parse_texture_lines(char *line, t_cub *cub)
 {
+	char	*path;
+
+	path = malloc(sizeof(char) * ft_strlen(line));
 	if (line[0] == 'N' && line[1] == 'O')
     {
-        cub->textures.tx_north = malloc(sizeof(char) * ft_strlen(line));
-        sscanf(line, "NO %s", cub->textures.tx_north);
+        sscanf(line, "NO %s", path);
+		path_to_texture(cub, 0, path);
     }
 	else if (line[0] == 'S' && line[1] == 'O')
 	{
-		cub->textures.tx_south = malloc(sizeof(char) * ft_strlen(line));
-		sscanf(line, "SO %s", cub->textures.tx_south);
+		sscanf(line, "SO %s", path);
+		path_to_texture(cub, 1, path);
 	}
 	else if (line[0] == 'W' && line[1] == 'E')
 	{
-		cub->textures.tx_west = malloc(sizeof(char) * ft_strlen(line));
-		sscanf(line, "WE %s", cub->textures.tx_west);
+		sscanf(line, "WE %s", path);
+		path_to_texture(cub, 2, path);
 	}
 	else if (line[0] == 'E' && line[1] == 'A')
 	{
-		cub->textures.tx_east = malloc(sizeof(char) * ft_strlen(line));
-		sscanf(line, "EA %s", cub->textures.tx_east);
+		sscanf(line, "EA %s", path);
+		path_to_texture(cub, 3, path);
 	}
 }
 
