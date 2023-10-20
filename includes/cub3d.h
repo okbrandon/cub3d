@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/19 15:37:59 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:53:04 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,12 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str);
 /* ft_parser_utils.c */
 int		ft_is_valid_rgb(int r, int g, int b);
 int		ft_is_map_valid(t_map map);
+int		ft_is_line_valid(char *line);
 
 /* ft_sscanf.c */
 int		ft_sscanf(const char *str, const char *format, ...);
+
+/* ft_debug.c */
+void	print_map_matrix(t_map map);
 
 #endif

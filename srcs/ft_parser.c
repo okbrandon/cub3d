@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/19 14:01:42 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:49:11 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,39 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
+char	*set_for_trim(void)
+{
+	char	*set;
+
+	set = malloc(sizeof(char) * 3);
+	set[0] = ' ';
+	set[1] = '\t';
+	set[2] = '\n';
+	return (set);
+}
+
 char	*get_file_content(char *path)
 {
 	int		fd;
 	char	*line;
 	char	*content;
-
+	char	*tmp;
+	
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		ft_error("file not found");
 	content = ft_strdup("");
 	line = get_next_line(fd);
-	while (line != NULL)
+	tmp = set_for_trim();
+	while (line != NULL) 
 	{
-		content = ft_strjoin(content, line);
-		content = ft_strjoin(content, "\n");
+		if (ft_strlen(ft_strtrim(line, tmp)) > 0)
+			content = ft_strjoin(content, line);
+		
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(tmp);
 	free(line);
 	close(fd);
 	return (content);
@@ -128,10 +143,17 @@ void	parse_color_lines(char *line, t_cub *cub)
 	}
 }
 
-void	parse_map_lines(char *line, t_map *map, int *j)
+void	parse_map_lines(char *line, char *matrix[1024], t_cub *cub, int *j, t_map *map)
 {
-	map->matrix[*j] = malloc(sizeof(char) * ft_strlen(line));
-	ft_strcpy(map->matrix[*j], line);
+	if (ft_is_line_valid(line) == FALSE)
+		ft_error("map contains invalid characters");
+	if (cub->textures.mlx_textures == NULL || cub->textures.ceiling == 0 || cub->textures.floor == 0)
+		ft_error("map must be defined after textures and colors");
+	map->height++;
+	if (ft_strlen(line) > map->width)
+		map->width = ft_strlen(line);
+	matrix[*j] = malloc(sizeof(char) * ft_strlen(line) + 1);
+	ft_strcpy(matrix[*j], line);
 	(*j)++;
 }
 
@@ -140,12 +162,12 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
 	int		i;
 	int		j;
 	char	line[1024];
+	char	*matrix[1024];
 	t_map	map;
 
 	map_str = get_file_content(map_str);
-	map.width = 21;
-	map.height = 21;
-    map.matrix = malloc(sizeof(char *) * map.height);
+	map.height = 0;
+	map.width = 0;
 	init_textures(cub);
 	j = 0;
 	while (sscanf(map_str, "%1023[^\n]\n%n", line, &i) == 1)
@@ -156,8 +178,16 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
 		else if (line[0] == 'F' || line[0] == 'C')
 			parse_color_lines(line, cub);
 		else
-			parse_map_lines(line, &map, &j);
+			parse_map_lines(line, matrix, cub, &j, &map);
 		map_str += i;
+	}
+    map.matrix = malloc(sizeof(char *) * map.height);
+	i = 0;
+	while (i < map.height)
+	{
+		map.matrix[i] = malloc(sizeof(char) * map.width + 1);
+		ft_strcpy(map.matrix[i], matrix[i]);
+		i++;
 	}
 	ft_is_map_valid(map);
 	return (map);
