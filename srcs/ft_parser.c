@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/20 18:49:11 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:05:59 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ char	*get_file_content(char *path)
 	while (line != NULL) 
 	{
 		if (ft_strlen(ft_strtrim(line, tmp)) > 0)
-			content = ft_strjoin(content, line);
-		
+			content = ft_free_to_join(content, line);
 		free(line);
 		line = get_next_line(fd);
 	}

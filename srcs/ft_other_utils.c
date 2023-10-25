@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:33:13 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/20 15:48:35 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/25 19:58:41 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,31 @@ void	ft_error(char *message)
 	exit(EXIT_FAILURE);
 }
 
+void	ft_free_map(t_cub *cub)
+{
+	int	i;
+
+	i = -1;
+	while (++i < cub->map.height)
+		free(cub->map.matrix[i]);
+	free(cub->map.matrix);
+}
+
+void	ft_free_textures(t_cub *cub)
+{
+	if (!cub->textures.mlx_textures)
+		return ;
+	if (cub->textures.mlx_textures[DIR_NORTH].img)
+		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_NORTH].img);
+	if (cub->textures.mlx_textures[DIR_SOUTH].img)
+		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_SOUTH].img);
+	if (cub->textures.mlx_textures[DIR_EAST].img)
+		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_EAST].img);
+	if (cub->textures.mlx_textures[DIR_WEST].img)
+		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_WEST].img);
+	free(cub->textures.mlx_textures);
+}
+
 int	ft_close(t_cub *cub)
 {
 	if (!cub)
@@ -34,6 +59,9 @@ int	ft_close(t_cub *cub)
 		mlx_destroy_window(cub->mlx.mlx, cub->mlx.window);
 	if (cub->mlx.img)
 		mlx_destroy_image(cub->mlx.mlx, cub->mlx.img);
+	ft_free_map(cub);
+	ft_free_textures(cub);
+	system("leaks cub3d");
 	exit(EXIT_SUCCESS);
 	return (0);
 }
