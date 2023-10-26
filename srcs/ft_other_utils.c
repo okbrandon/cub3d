@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:33:13 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/25 19:58:41 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:04:11 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,17 @@ void	ft_free_textures(t_cub *cub)
 	if (!cub->textures.mlx_textures)
 		return ;
 	if (cub->textures.mlx_textures[DIR_NORTH].img)
-		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_NORTH].img);
+		mlx_destroy_image(cub->mlx.mlx,
+			cub->textures.mlx_textures[DIR_NORTH].img);
 	if (cub->textures.mlx_textures[DIR_SOUTH].img)
-		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_SOUTH].img);
+		mlx_destroy_image(cub->mlx.mlx,
+			cub->textures.mlx_textures[DIR_SOUTH].img);
 	if (cub->textures.mlx_textures[DIR_EAST].img)
-		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_EAST].img);
+		mlx_destroy_image(cub->mlx.mlx,
+			cub->textures.mlx_textures[DIR_EAST].img);
 	if (cub->textures.mlx_textures[DIR_WEST].img)
-		mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[DIR_WEST].img);
+		mlx_destroy_image(cub->mlx.mlx,
+			cub->textures.mlx_textures[DIR_WEST].img);
 	free(cub->textures.mlx_textures);
 }
 

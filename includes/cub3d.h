@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/20 15:53:04 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:07:17 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,17 +154,25 @@ void	ft_error(char *message);
 int		ft_close(t_cub *cub);
 
 /* ft_parser.c */
-t_map	ft_unsafe_parse(t_cub *cub, char *map_str);
+t_map	ft_map_parser(char *path);
+
+/* ft_tx_parser.c */
+t_textures	ft_texture_parser(t_cub *cub, char *path);
 
 /* ft_parser_utils.c */
-int		ft_is_valid_rgb(int r, int g, int b);
 int		ft_is_map_valid(t_map map);
 int		ft_is_line_valid(char *line);
 
-/* ft_sscanf.c */
-int		ft_sscanf(const char *str, const char *format, ...);
+/* ft_scan.c */
+int		*scan_rgb(char *identifier, char *line);
+int		ft_strslen(char **strs);
 
 /* ft_debug.c */
 void	print_map_matrix(t_map map);
+
+/* ft_utils.c */
+int		ft_is_valid_rgb(int r, int g, int b);
+char	*ft_strcpy(char *dest, char *src);
+int		dir_from_id(char *identifier);
 
 #endif

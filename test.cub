@@ -1,21 +1,10 @@
-C 153,204,255
-F 164,169,20
-
-
-
-
-
-N O textures/simonkraft/bookshelf.xpm
-S O textures/simonkraft/wet_sponge.xpm
-W E textures/simonkraft/cobblestone.xpm
-E A textures/simonkraft/cyan_concrete.xpm
-
-
+SO   ./textures/simonkraft/wet_sponge.xpm   
+EA   ./textures/simonkraft/cyan_concrete.xpm   
+WE   ./textures/simonkraft/cobblestone.xpm   
+NO   ./textures/simonkraft/bookshelf.xpm   
+F     0,0,20    
+C     153,204,255     
 
 111111111111111111111
-1N00000000000000 0001
-11  111             1
-
-
-
-
+1N0000000000000010001
+1111111111111 1111111

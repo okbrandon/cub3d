@@ -6,22 +6,11 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:02:51 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/23 14:28:03 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:07:35 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int	ft_is_valid_rgb(int r, int g, int b)
-{
-	if (r < 0 || r > 255)
-		return (FALSE);
-	if (g < 0 || g > 255)
-		return (FALSE);
-	if (b < 0 || b > 255)
-		return (FALSE);
-	return (TRUE);
-}
 
 int	ft_is_valid_map_char(char c)
 {
@@ -35,6 +24,8 @@ int	ft_is_line_valid(char *line)
 	int	i;
 
 	i = 0;
+	if (line[0] != '1' || line[ft_strlen(line) - 1] != '1')
+		return (FALSE);
 	while (line[i])
 	{
 		if (line[i] == ' ')

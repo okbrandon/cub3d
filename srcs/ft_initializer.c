@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/23 14:36:05 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:16:04 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ t_cub	*ft_init_cub(char *filepath)
 	if (!cub)
 		ft_error("struct cub3d malloc failed");
 	cub->mlx = ft_init_mlx(filepath);
-	cub->map = ft_unsafe_parse(cub, filepath);
+	cub->textures = ft_texture_parser(cub, filepath);
+	cub->map = ft_map_parser(filepath);
 	cub->player = ft_init_player(cub->map);
 	cub->raycast = ft_init_raycast();
 	cub->filepath = filepath;
