@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/20 15:55:59 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:36:05 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,6 @@ static t_mlx	ft_init_mlx(char *filepath)
 	return (mlx);
 }
 
-static t_textures	ft_init_textures(void)
-{
-	t_textures	textures;
-
-	textures.mlx_textures = NULL;
-	textures.ceiling = 0;
-	textures.floor = 0;
-	return (textures);
-}
-
 static t_raycast	ft_init_raycast(void)
 {
 	t_raycast	ray;
@@ -146,7 +136,6 @@ t_cub	*ft_init_cub(char *filepath)
 	if (!cub)
 		ft_error("struct cub3d malloc failed");
 	cub->mlx = ft_init_mlx(filepath);
-	cub->textures = ft_init_textures();
 	cub->map = ft_unsafe_parse(cub, filepath);
 	cub->player = ft_init_player(cub->map);
 	cub->raycast = ft_init_raycast();

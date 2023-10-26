@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:49:10 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/25 20:05:59 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:23:15 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,20 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*set_for_trim(void)
+char	*set_for_trim(int include_space)
 {
 	char	*set;
+	int		size;
 
-	set = malloc(sizeof(char) * 3);
-	set[0] = ' ';
-	set[1] = '\t';
-	set[2] = '\n';
+	size = 2;
+	if (include_space)
+		size++;
+	set = malloc(sizeof(char) * size);
+	
+	set[0] = '\t';
+	set[1] = '\n';
+	if (include_space)
+		set[2] = ' ';
 	return (set);
 }
 
@@ -50,7 +56,7 @@ char	*get_file_content(char *path)
 		ft_error("file not found");
 	content = ft_strdup("");
 	line = get_next_line(fd);
-	tmp = set_for_trim();
+	tmp = set_for_trim(FALSE);
 	while (line != NULL) 
 	{
 		if (ft_strlen(ft_strtrim(line, tmp)) > 0)
@@ -69,7 +75,7 @@ void	init_textures(t_cub *cub)
 	cub->textures.mlx_textures = malloc(sizeof(t_mlx) * 5);
 	cub->textures.ceiling = 0;
 	cub->textures.floor = 0;
-}
+} 
 
 void	path_to_texture(t_cub *cub, int dir, char *path)
 {
@@ -77,6 +83,8 @@ void	path_to_texture(t_cub *cub, int dir, char *path)
 	int		width;
 	int		height;
 
+	if (!path)
+		ft_error("texture path not found");
 	width = TEX_WIDTH;
 	height = TEX_HEIGHT;
 	image = mlx_xpm_file_to_image(cub->mlx.mlx, path, &width, &height);
@@ -96,7 +104,13 @@ void	path_to_texture(t_cub *cub, int dir, char *path)
 void	parse_texture_lines(char *line, t_cub *cub)
 {
 	char	*path;
-
+	char	*tmp;
+	
+	tmp = set_for_trim(TRUE);
+	path = ft_strtrim(line, tmp);
+	free(tmp);
+	line = ft_strdup(path);
+	free(path);
 	path = malloc(sizeof(char) * ft_strlen(line));
 	if (line[0] == 'N' && line[1] == 'O')
     {
@@ -125,7 +139,17 @@ void	parse_color_lines(char *line, t_cub *cub)
 	int	r;
 	int	g;
 	int	b;
+	char	*tmp;
+	char	*tmp2;
 
+	r = -1;
+	g = -1;
+	b = -1;
+	tmp = set_for_trim(TRUE);
+	tmp2 = ft_strtrim(line, tmp);
+	free(tmp);
+	line = ft_strdup(tmp2);
+	free(tmp2);
 	if (line[0] == 'F')
 	{
 		sscanf(line, "F %d,%d,%d", &r, &g, &b);
@@ -162,7 +186,7 @@ t_map	ft_unsafe_parse(t_cub *cub, char *map_str)
 	int		j;
 	char	line[1024];
 	char	*matrix[1024];
-	t_map	map;
+	t_map	map; 
 
 	map_str = get_file_content(map_str);
 	map.height = 0;

@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:02:51 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:53:42 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:28:03 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_is_line_valid(char *line)
 	i = 0;
 	while (line[i])
 	{
+		if (line[i] == ' ')
+			line[i] = '1';
 		if (!ft_is_valid_map_char(line[i]))
 			return (FALSE);
 		i++;
