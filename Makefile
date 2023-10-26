@@ -6,7 +6,7 @@
 #    By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/26 18:14:26 by evmorvan         ###   ########.fr        #
+#    Updated: 2023/10/26 20:27:28 by evmorvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS			= cub3d.c \
 				  ft_debug.c \
 				  ft_utils.c \
 				  ft_tx_parser.c \
+				  ft_floodfill.c \
 
 LIBFT_LIB		= libft/libft.a
 LIBFT_LIB_DIR	= libft

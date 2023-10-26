@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:57:13 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/26 19:05:14 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:43:53 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_map	ft_map_parser(char *path)
 	while (line != NULL)
 	{
 		tmp = line;
-		line = ft_strtrim(line, "\t\n ");
+		line = ft_strtrim(line, "\t\n");
 		if (ft_is_line_valid(line) == TRUE)
 		{
 			reading_map = TRUE;
@@ -74,5 +74,7 @@ t_map	ft_map_parser(char *path)
 	free(line);
 	close(fd);
 	ft_is_map_valid(map);
+	ft_normalise_width(map);
+	print_map_matrix(map);
 	return (map);
 }

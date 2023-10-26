@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/26 19:07:17 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:37:09 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <stdbool.h>
 
 # define RED 			"\033[0;31m"
 # define PURPLE 		"\033[38;5;141m"
@@ -162,6 +163,7 @@ t_textures	ft_texture_parser(t_cub *cub, char *path);
 /* ft_parser_utils.c */
 int		ft_is_map_valid(t_map map);
 int		ft_is_line_valid(char *line);
+void	ft_normalise_width(t_map map);
 
 /* ft_scan.c */
 int		*scan_rgb(char *identifier, char *line);
@@ -174,5 +176,8 @@ void	print_map_matrix(t_map map);
 int		ft_is_valid_rgb(int r, int g, int b);
 char	*ft_strcpy(char *dest, char *src);
 int		dir_from_id(char *identifier);
+
+/* ft_floodfill.c */
+bool	fl_can_exit(t_map map);
 
 #endif

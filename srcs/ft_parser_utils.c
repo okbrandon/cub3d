@@ -6,7 +6,7 @@
 /*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:02:51 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/26 19:07:35 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:45:45 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,26 @@ int	ft_is_valid_map_char(char c)
 	return (FALSE);
 }
 
+int	ft_is_line_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
 int	ft_is_line_valid(char *line)
 {
 	int	i;
 
 	i = 0;
-	if (line[0] != '1' || line[ft_strlen(line) - 1] != '1')
+	if (ft_is_line_empty(line))
 		return (FALSE);
 	while (line[i])
 	{
@@ -115,10 +129,28 @@ int	ft_is_map_valid(t_map map)
 		ft_error("Map contains no spawn point (N, S, E, W)");
 		return (FALSE);
 	}
-	if (check_map_sides(&map, map.matrix) == FALSE)
+	if (fl_can_exit(map))
 	{
-		ft_error("Map must be surrounded by walls");
+		ft_error("Map is not closed");
 		return (FALSE);
 	}
 	return (TRUE);
+}
+
+void	ft_normalise_width(t_map map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map.height)
+	{
+		j = ft_strlen(map.matrix[i]);
+		while (j < map.width)
+		{
+			map.matrix[i] = ft_free_to_join(map.matrix[i], "1");
+			j++;
+		}
+		i++;
+	}
 }
