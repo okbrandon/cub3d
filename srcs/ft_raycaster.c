@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycaster.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/26 23:51:35 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:40:28 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ void	ft_apply_dda_algorithm(t_cub *cub)
 			ray->map_y += ray->step_y;
 			ray->side_hit = 1;
 		}
-		print_map_matrix(cub->map);
-		if (cub->map.matrix[ray->map_y][ray->map_x] == '1')
+		if (cub->map.matrix[ray->map_x][ray->map_y] == '1')
 			ray->wall_hit = 1;
 	}
 	if (ray->side_hit == 0)
