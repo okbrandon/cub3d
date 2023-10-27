@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:36:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/18 11:26:52 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:14:08 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_is_wall(float x, float y, t_cub *cub)
 	if (!cub->map.matrix)
 		ft_error("map not found");
 	worldmap = cub->map.matrix;
-	if (worldmap[(int)x][(int)y] == '1')
+	if (worldmap[(int)y][(int)x] == '1')
 		return (TRUE);
 	return (FALSE);
 }
