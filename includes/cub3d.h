@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 22:03:17 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:32:27 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,9 @@ int		ft_to_trgb(int t, int r, int g, int b);
 /* ft_other_utils.c */
 double	ft_abs(double x);
 void	ft_error(char *message);
-int		ft_close(t_cub *cub);
+int		ft_is_valid_rgb(int r, int g, int b);
+char	**ft_strsjoin(char **strs, char *str);
+int		dir_from_id(char *identifier);
 
 /* ft_parser.c */
 t_map	ft_map_parser(char *path);
@@ -166,22 +168,16 @@ t_textures	ft_texture_parser(t_cub *cub, char *path);
 /* ft_parser_utils.c */
 int		ft_is_map_valid(t_map map);
 int		ft_is_line_valid(char *line);
-void	ft_normalise_width(t_map map);
 void	ft_find_player(t_map *map);
 
 /* ft_scan.c */
 int		*scan_rgb(char *identifier, char *line);
 int		ft_strslen(char **strs);
 
-/* ft_debug.c */
-void	print_map_matrix(t_map map);
-
-/* ft_utils.c */
-int		ft_is_valid_rgb(int r, int g, int b);
-char	*ft_strcpy(char *dest, char *src);
-int		dir_from_id(char *identifier);
-
 /* ft_floodfill.c */
 bool	fl_can_exit(t_map map);
+
+/* ft_free_utils.c */
+int		ft_close(t_cub *cub);
 
 #endif

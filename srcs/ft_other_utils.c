@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:33:13 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 21:41:41 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:46:26 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,45 +26,46 @@ void	ft_error(char *message)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_free_map(t_cub *cub)
+char	**ft_strsjoin(char **strs, char *str)
 {
-	int	i;
+	int		i;
+	char	**new_strs;
 
-	i = -1;
-	while (++i < cub->map.height)
-		free(cub->map.matrix[i]);
-	free(cub->map.matrix);
+	i = 0;
+	new_strs = malloc(sizeof(char *) * (ft_strslen(strs) + 2));
+	if (!new_strs)
+		ft_error("malloc error");
+	while (strs[i])
+	{
+		new_strs[i] = strs[i];
+		i++;
+	}
+	new_strs[i] = str;
+	new_strs[i + 1] = NULL;
+	free(strs);
+	return (new_strs);
 }
 
-void	ft_free_textures(t_cub *cub)
+int	ft_is_valid_rgb(int r, int g, int b)
 {
-	if (!cub->textures.mlx_textures)
-		return ;
-	if (cub->textures.mlx_textures[DIR_NORTH].img)
-		mlx_destroy_image(cub->mlx.mlx,
-			cub->textures.mlx_textures[DIR_NORTH].img);
-	if (cub->textures.mlx_textures[DIR_SOUTH].img)
-		mlx_destroy_image(cub->mlx.mlx,
-			cub->textures.mlx_textures[DIR_SOUTH].img);
-	if (cub->textures.mlx_textures[DIR_EAST].img)
-		mlx_destroy_image(cub->mlx.mlx,
-			cub->textures.mlx_textures[DIR_EAST].img);
-	if (cub->textures.mlx_textures[DIR_WEST].img)
-		mlx_destroy_image(cub->mlx.mlx,
-			cub->textures.mlx_textures[DIR_WEST].img);
-	free(cub->textures.mlx_textures);
+	if (r < 0 || r > 255)
+		return (FALSE);
+	if (g < 0 || g > 255)
+		return (FALSE);
+	if (b < 0 || b > 255)
+		return (FALSE);
+	return (TRUE);
 }
 
-int	ft_close(t_cub *cub)
+int	dir_from_id(char *identifier)
 {
-	if (!cub)
-		return (1);
-	if (cub->mlx.window)
-		mlx_destroy_window(cub->mlx.mlx, cub->mlx.window);
-	if (cub->mlx.img)
-		mlx_destroy_image(cub->mlx.mlx, cub->mlx.img);
-	ft_free_map(cub);
-	ft_free_textures(cub);
-	exit(EXIT_SUCCESS);
-	return (0);
+	if (ft_strncmp(identifier, "NO ", 3) == 0)
+		return (DIR_NORTH);
+	if (ft_strncmp(identifier, "SO ", 3) == 0)
+		return (DIR_SOUTH);
+	if (ft_strncmp(identifier, "WE ", 3) == 0)
+		return (DIR_WEST);
+	if (ft_strncmp(identifier, "EA ", 3) == 0)
+		return (DIR_EAST);
+	return (-1);
 }

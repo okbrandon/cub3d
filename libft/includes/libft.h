@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:15:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/25 20:03:40 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 22:38:28 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 }					t_list;
 
 char	*ft_itoa(int n);
+char	*ft_free_to_trim(char *s1, const char *set);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);

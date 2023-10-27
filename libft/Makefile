@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 11:45:32 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/02/13 17:05:05 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/27 22:37:52 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC_DIR			= ./srcs/
 SRCS			= libft/ft_atoi.c \
 			    libft/ft_bzero.c \
 			    libft/ft_calloc.c \
+				libft/ft_free_to_trim.c \
 			    libft/ft_isalnum.c \
 			    libft/ft_isalpha.c \
 			    libft/ft_isascii.c \
