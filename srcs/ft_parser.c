@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:57:13 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/26 23:43:53 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/27 22:03:25 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ t_map	ft_map_parser(char *path)
 	close(fd);
 	ft_is_map_valid(map);
 	ft_normalise_width(map);
-	print_map_matrix(map);
+	ft_find_player(&map);
 	return (map);
 }

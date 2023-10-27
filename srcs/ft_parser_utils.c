@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:02:51 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/26 23:45:45 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/27 22:08:28 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,28 @@ void	ft_normalise_width(t_map map)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	ft_find_player(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < map->height)
+	{
+		j = -1;
+		while (++j < ft_strlen(map->matrix[i]))
+		{
+			if (map->matrix[i][j] == 'N' || map->matrix[i][j] == 'S' \
+				|| map->matrix[i][j] == 'E' || map->matrix[i][j] == 'W')
+			{
+				map->player_x = i;
+				map->player_y = j;
+				map->player_dir = map->matrix[i][j];
+				return ;
+			}
+		}
 	}
 }

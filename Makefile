@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/26 20:27:28 by evmorvan         ###   ########.fr        #
+#    Updated: 2023/10/27 22:05:27 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS			= cub3d.c \
 				  ft_parser.c \
 				  ft_parser_utils.c \
 				  ft_scan.c \
-				  ft_debug.c \
 				  ft_utils.c \
 				  ft_tx_parser.c \
 				  ft_floodfill.c \

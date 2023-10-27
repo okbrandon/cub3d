@@ -6,70 +6,56 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 20:40:48 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 22:20:09 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-/* TODO: Better direction finder by parsing 
- * SOUTH: dir_x = 0, dir_y = 1, plane_x = -0.66, plane_y = 0;
- * NORTH: dir_x = 0, dir_y = -1, plane_x = 0.66, plane_y = 0;
- * EAST: dir_x = 1, dir_y = 0, plane_x = 0, plane_y = 0.66;
- * WEST: dir_x = -1, dir_y = 0, plane_x = 0, plane_y = -0.66;
- */
+static void	ft_assign_player_dir(t_player *player, int direction)
+{
+	if (direction == DIR_NORTH)
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_y = 0.66;
+	}
+	else if (direction == DIR_SOUTH)
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_y = -0.66;
+	}
+	else if (direction == DIR_EAST)
+	{
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->plane_x = 0.66;
+	}
+	else if (direction == DIR_WEST)
+	{
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->plane_x = -0.66;
+	}
+}
+
 static t_player	ft_init_player(t_map map)
 {
 	t_player	player;
-	int			i;
-	int			j;
 
-	i = 0;
-	while (i < map.height)
-	{
-		j = 0;
-		while (j < ft_strlen(map.matrix[i]))
-		{
-			if (map.matrix[i][j] == 'N')
-			{
-				player.dir_x = -1;
-				player.dir_y = 0;
-				player.plane_x = 0;
-				player.plane_y = 0.66;
-				player.pos_x = i + 0.5;
-				player.pos_y = j + 0.5;
-			}
-			else if (map.matrix[i][j] == 'S')
-			{
-				player.dir_x = 1;
-				player.dir_y = 0;
-				player.plane_x = 0;
-				player.plane_y = -0.66;
-				player.pos_x = i + 0.5;
-				player.pos_y = j + 0.5;
-			}
-			else if (map.matrix[i][j] == 'E')
-			{
-				player.dir_x = 0;
-				player.dir_y = 1;
-				player.plane_x = 0.66;
-				player.plane_y = 0;
-				player.pos_x = i + 0.5;
-				player.pos_y = j + 0.5;
-			}
-			else if (map.matrix[i][j] == 'W')
-			{
-				player.dir_x = 0;
-				player.dir_y = -1;
-				player.plane_x = -0.66;
-				player.plane_y = 0;
-				player.pos_x = i + 0.5;
-				player.pos_y = j + 0.5;
-			}
-			j++;
-		}
-		i++;
-	}
+	player.plane_x = 0;
+	player.plane_y = 0;
+	if (map.player_dir == 'N')
+		ft_assign_player_dir(&player, DIR_NORTH);
+	else if (map.player_dir == 'S')
+		ft_assign_player_dir(&player, DIR_SOUTH);
+	else if (map.player_dir == 'E')
+		ft_assign_player_dir(&player, DIR_EAST);
+	else if (map.player_dir == 'W')
+		ft_assign_player_dir(&player, DIR_WEST);
+	player.pos_x = map.player_x + 0.5;
+	player.pos_y = map.player_y + 0.5;
 	player.old_dir_x = 0;
 	player.old_plane_x = 0;
 	return (player);
