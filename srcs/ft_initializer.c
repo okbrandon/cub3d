@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 12:14:38 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:40:48 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,39 @@ static t_player	ft_init_player(t_map map)
 		{
 			if (map.matrix[i][j] == 'N')
 			{
-				player.dir_x = 0;
-				player.dir_y = -1;
-				player.plane_x = 0.66;
-				player.plane_y = 0;
-				player.pos_x = j + 0.5;
-				player.pos_y = i + 0.5;
+				player.dir_x = -1;
+				player.dir_y = 0;
+				player.plane_x = 0;
+				player.plane_y = 0.66;
+				player.pos_x = i + 0.5;
+				player.pos_y = j + 0.5;
 			}
 			else if (map.matrix[i][j] == 'S')
-			{
-				player.dir_x = 0;
-				player.dir_y = 1;
-				player.plane_x = -0.66;
-				player.plane_y = 0;
-				player.pos_x = j + 0.5;
-				player.pos_y = i + 0.5;
-			}
-			else if (map.matrix[i][j] == 'E')
 			{
 				player.dir_x = 1;
 				player.dir_y = 0;
 				player.plane_x = 0;
-				player.plane_y = 0.66;
-				player.pos_x = j + 0.5;
-				player.pos_y = i + 0.5;
+				player.plane_y = -0.66;
+				player.pos_x = i + 0.5;
+				player.pos_y = j + 0.5;
+			}
+			else if (map.matrix[i][j] == 'E')
+			{
+				player.dir_x = 0;
+				player.dir_y = 1;
+				player.plane_x = 0.66;
+				player.plane_y = 0;
+				player.pos_x = i + 0.5;
+				player.pos_y = j + 0.5;
 			}
 			else if (map.matrix[i][j] == 'W')
 			{
-				player.dir_x = -1;
-				player.dir_y = 0;
-				player.plane_x = 0;
-				player.plane_y = -0.66;
-				player.pos_x = j + 0.5;
-				player.pos_y = i + 0.5;
+				player.dir_x = 0;
+				player.dir_y = -1;
+				player.plane_x = -0.66;
+				player.plane_y = 0;
+				player.pos_x = i + 0.5;
+				player.pos_y = j + 0.5;
 			}
 			j++;
 		}

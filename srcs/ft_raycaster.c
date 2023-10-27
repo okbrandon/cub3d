@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 12:14:30 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:40:14 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_apply_dda_algorithm(t_cub *cub)
 			ray->map_y += ray->step_y;
 			ray->side_hit = 1;
 		}
-		if (cub->map.matrix[ray->map_y][ray->map_x] == '1')
+		if (cub->map.matrix[ray->map_x][ray->map_y] == '1')
 			ray->wall_hit = 1;
 	}
 	if (ray->side_hit == 0)

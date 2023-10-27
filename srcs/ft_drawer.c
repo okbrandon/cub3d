@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:37:43 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 12:14:58 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:32:40 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_draw_floor_ceiling(t_cub *cub, int x, int from)
 	}
 }
 
-void	ft_apply_texture(t_cub *cub, int direction, int x)
+static void	ft_apply_texture(t_cub *cub, int direction, int x)
 {
 	int	color;
 
@@ -68,19 +68,13 @@ void	ft_draw_textures(t_cub *cub, int x)
 	{
 		ray->tex_y = (int)ray->tex_pos & (TEX_HEIGHT - 1);
 		ray->tex_pos += ray->tex_step;
-		if (!ray->side_hit)
-		{
-			if (ray->ray_dir_x < 0)
-				ft_apply_texture(cub, DIR_WEST, x);
-			else
-				ft_apply_texture(cub, DIR_EAST, x);
-		}
-		else
-		{
-			if (ray->ray_dir_y > 0)
-				ft_apply_texture(cub, DIR_SOUTH, x);
-			else
-				ft_apply_texture(cub, DIR_NORTH, x);
-		}
+		if (!ray->side_hit && cub->player.pos_x < ray->map_x)
+			ft_apply_texture(cub, DIR_SOUTH, x);
+		else if (!ray->side_hit && cub->player.pos_x > ray->map_x)
+			ft_apply_texture(cub, DIR_NORTH, x);
+		else if (ray->side_hit && cub->player.pos_y < ray->map_y)
+			ft_apply_texture(cub, DIR_EAST, x);
+		else if (ray->side_hit && cub->player.pos_y > ray->map_y)
+			ft_apply_texture(cub, DIR_WEST, x);
 	}
 }
