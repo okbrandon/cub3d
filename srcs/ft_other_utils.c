@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:33:13 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/26 19:04:11 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/27 21:41:41 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	ft_close(t_cub *cub)
 		mlx_destroy_image(cub->mlx.mlx, cub->mlx.img);
 	ft_free_map(cub);
 	ft_free_textures(cub);
-	system("leaks cub3d");
 	exit(EXIT_SUCCESS);
 	return (0);
 }
