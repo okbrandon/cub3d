@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 15:40:14 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:20:58 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	ft_init_ray_directions(t_cub *cub, int x)
 {

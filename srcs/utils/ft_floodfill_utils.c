@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:32:45 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 10:33:22 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:34:49 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	fl_find_player(t_map map, int *sr, int *sc)
 {

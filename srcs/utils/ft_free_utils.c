@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 23:30:52 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 23:46:32 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:34:55 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_free_map(t_cub *cub)
 {

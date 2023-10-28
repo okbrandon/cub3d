@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 20:12:55 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 10:33:13 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:19:59 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	fl_init_visited(bool **visited, t_map map)
 {

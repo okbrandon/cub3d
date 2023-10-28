@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:37:43 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 20:32:40 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:20:47 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	ft_draw_floor_ceiling(t_cub *cub, int x, int from)
 {

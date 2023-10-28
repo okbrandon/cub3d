@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/28 10:36:34 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/28 13:39:02 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,20 @@ NAME			= cub3d
 
 SRC_DIR			= ./srcs/
 SRCS			= cub3d.c \
-				  ft_args_checker.c \
-				  ft_drawer.c \
-				  ft_initializer.c \
-				  ft_key_handler.c \
-				  ft_mlx_utils.c \
-				  ft_other_utils.c \
-				  ft_raycaster.c \
-				  ft_parser.c \
-				  ft_parser_utils.c \
-				  ft_scan.c \
-				  ft_tx_parser.c \
-				  ft_floodfill.c \
-				  ft_floodfill_utils.c \
-				  ft_free_utils.c \
+				  game/ft_game_init.c \
+				  game/ft_key_handler.c \
+				  parsing/ft_args_checker.c \
+				  parsing/ft_floodfill.c \
+				  parsing/ft_parser.c \
+				  parsing/ft_scan.c \
+				  parsing/ft_tx_parser.c \
+				  raycasting/ft_drawer.c \
+				  raycasting/ft_raycaster.c \
+				  utils/ft_floodfill_utils.c \
+				  utils/ft_free_utils.c \
+				  utils/ft_mlx_utils.c \
+				  utils/ft_other_utils.c \
+				  utils/ft_parser_utils.c \
 
 LIBFT_LIB		= libft/libft.a
 LIBFT_LIB_DIR	= libft
@@ -70,6 +70,10 @@ ${OBJS}:		| ${OBJ_DIR}
 
 ${OBJ_DIR}:
 	@mkdir ${OBJ_DIR}
+	@mkdir ${OBJ_DIR}game
+	@mkdir ${OBJ_DIR}parsing
+	@mkdir ${OBJ_DIR}raycasting
+	@mkdir ${OBJ_DIR}utils
 
 ${LIBFT_LIB}:
 	@make -C ${LIBFT_LIB_DIR}

@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:57:13 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 10:48:15 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:19:35 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static t_map	ft_init_map(void)
 {

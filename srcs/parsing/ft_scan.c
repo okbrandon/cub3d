@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:44:26 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 10:49:07 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:22:35 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	ft_strslen(char **strs)
 {

@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:25:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 15:11:51 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:22:08 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 {
