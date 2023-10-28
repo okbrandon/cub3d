@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/28 13:39:02 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/28 15:13:25 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,40 @@ CLEAR			= \r\033[K
 NAME			= cub3d
 
 SRC_DIR			= ./srcs/
-SRCS			= cub3d.c \
-				  game/ft_game_init.c \
-				  game/ft_key_handler.c \
-				  parsing/ft_args_checker.c \
-				  parsing/ft_floodfill.c \
-				  parsing/ft_parser.c \
-				  parsing/ft_scan.c \
-				  parsing/ft_tx_parser.c \
-				  raycasting/ft_drawer.c \
-				  raycasting/ft_raycaster.c \
-				  utils/ft_floodfill_utils.c \
-				  utils/ft_free_utils.c \
-				  utils/ft_mlx_utils.c \
-				  utils/ft_other_utils.c \
-				  utils/ft_parser_utils.c \
+SRCS			= $(addprefix mandatory/, \
+						cub3d.c \
+						game/ft_game_init.c \
+						game/ft_key_handler.c \
+						parsing/ft_args_checker.c \
+						parsing/ft_floodfill.c \
+						parsing/ft_parser.c \
+						parsing/ft_scan.c \
+						parsing/ft_tx_parser.c \
+						raycasting/ft_drawer.c \
+						raycasting/ft_raycaster.c \
+						utils/ft_floodfill_utils.c \
+						utils/ft_free_utils.c \
+						utils/ft_mlx_utils.c \
+						utils/ft_other_utils.c \
+						utils/ft_parser_utils.c \
+)
+SRCS_B			= $(addprefix bonus/, \
+						cub3d_bonus.c \
+						game/ft_game_init_bonus.c \
+						game/ft_key_handler_bonus.c \
+						parsing/ft_args_checker_bonus.c \
+						parsing/ft_floodfill_bonus.c \
+						parsing/ft_parser_bonus.c \
+						parsing/ft_scan_bonus.c \
+						parsing/ft_tx_parser_bonus.c \
+						raycasting/ft_drawer_bonus.c \
+						raycasting/ft_raycaster_bonus.c \
+						utils/ft_floodfill_utils_bonus.c \
+						utils/ft_free_utils_bonus.c \
+						utils/ft_mlx_utils_bonus.c \
+						utils/ft_other_utils_bonus.c \
+						utils/ft_parser_utils_bonus.c \
+)
 
 LIBFT_LIB		= libft/libft.a
 LIBFT_LIB_DIR	= libft
@@ -47,10 +66,15 @@ MLX_LIB_DIR		= mlx
 
 OBJ_DIR			= ./objs/
 OBJS			= ${addprefix ${OBJ_DIR}, ${SRCS:.c=.o}}
+OBJS_B			= ${addprefix ${OBJ_DIR}, ${SRCS_B:.c=.o}}
 
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -arch x86_64 -g -Imlx -I $(LIBFT_LIB_DIR)/includes/
 RM				= rm -rf
+
+ifdef MAKEBONUS
+	OBJS = ${OBJS_B}
+endif
 
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 	@printf "${CLEAR}${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Compiling ${GREEN}%s${RESET}...${GREY}" ${notdir $<}
@@ -68,18 +92,26 @@ $(LIBFT_LIB_DIR):
 
 ${OBJS}:		| ${OBJ_DIR}
 
+${OBJS_B}:		| ${OBJ_DIR}
+
 ${OBJ_DIR}:
-	@mkdir ${OBJ_DIR}
-	@mkdir ${OBJ_DIR}game
-	@mkdir ${OBJ_DIR}parsing
-	@mkdir ${OBJ_DIR}raycasting
-	@mkdir ${OBJ_DIR}utils
+	@mkdir -p ${OBJ_DIR}/mandatory/game
+	@mkdir -p ${OBJ_DIR}/mandatory/parsing
+	@mkdir -p ${OBJ_DIR}/mandatory/raycasting
+	@mkdir -p ${OBJ_DIR}/mandatory/utils
+	@mkdir -p ${OBJ_DIR}/bonus/game
+	@mkdir -p ${OBJ_DIR}/bonus/parsing
+	@mkdir -p ${OBJ_DIR}/bonus/raycasting
+	@mkdir -p ${OBJ_DIR}/bonus/utils
 
 ${LIBFT_LIB}:
-	@make -C ${LIBFT_LIB_DIR}
+	@$(MAKE) -C ${LIBFT_LIB_DIR}
 
 $(MLX_LIB):
 	@$(MAKE) -C $(MLX_LIB_DIR)
+
+bonus:
+	@$(MAKE) MAKEBONUS=1 re
 
 clean:
 	@$(MAKE) clean -C $(LIBFT_LIB_DIR)
