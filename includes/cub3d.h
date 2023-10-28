@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 10:36:18 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:47:29 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@
 # define GREEN 			"\033[38;5;46m"
 # define RESET 			"\033[0m"
 # define BOLD 			"\033[1m"
-
-# define TRUE			1
-# define FALSE			0
 
 # define WIN_WIDTH		1280
 # define WIN_HEIGHT		800
@@ -155,7 +152,7 @@ int		ft_to_trgb(int t, int r, int g, int b);
 /* ft_other_utils.c */
 double	ft_abs(double x);
 void	ft_error(char *message);
-int		ft_is_valid_rgb(int r, int g, int b);
+bool	ft_is_valid_rgb(int r, int g, int b);
 char	**ft_strsjoin(char **strs, char *str);
 int		dir_from_id(char *identifier);
 
@@ -166,8 +163,8 @@ t_map	ft_map_parser(char *path);
 t_textures	ft_texture_parser(t_cub *cub, char *path);
 
 /* ft_parser_utils.c */
-int		ft_is_map_valid(t_map map);
-int		ft_is_line_valid(char *line);
+bool	ft_is_map_valid(t_map map);
+bool	ft_is_line_valid(char *line);
 void	ft_find_player(t_map *map);
 
 /* ft_scan.c */

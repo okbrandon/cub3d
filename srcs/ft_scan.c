@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scan.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:44:26 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/26 19:05:03 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:49:07 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_free_strs(char **strs)
 	free(strs);
 }
 
-int	ft_is_str_digit(char *str)
+bool	ft_is_str_digit(char *str)
 {
 	int	i;
 
@@ -44,10 +44,10 @@ int	ft_is_str_digit(char *str)
 	{
 		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '\t'
 			&& str[i] != '\n')
-			return (FALSE);
+			return (false);
 		i++;
 	}
-	return (TRUE);
+	return (true);
 }
 
 int	*scan_rgb(char *identifier, char *line)

@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:50 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 10:31:06 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:49:40 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	parse_color(t_textures *texture, char *line)
 		if (texture->ceiling != -1)
 			ft_error("ceiling color already set");
 		rgb = scan_rgb("C", line);
-		if (ft_is_valid_rgb(rgb[0], rgb[1], rgb[2]) == FALSE)
+		if (!ft_is_valid_rgb(rgb[0], rgb[1], rgb[2]))
 			ft_error("invalid rgb color");
 		texture->ceiling = ft_to_trgb(0, rgb[0], rgb[1], rgb[2]);
 		free(rgb);
@@ -31,7 +31,7 @@ static void	parse_color(t_textures *texture, char *line)
 		if (texture->floor != -1)
 			ft_error("floor color already set");
 		rgb = scan_rgb("F", line);
-		if (ft_is_valid_rgb(rgb[0], rgb[1], rgb[2]) == FALSE)
+		if (!ft_is_valid_rgb(rgb[0], rgb[1], rgb[2]))
 			ft_error("invalid rgb color");
 		texture->floor = ft_to_trgb(0, rgb[0], rgb[1], rgb[2]);
 		free(rgb);

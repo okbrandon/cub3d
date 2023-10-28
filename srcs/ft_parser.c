@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:57:13 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 10:36:14 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:48:15 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ static t_map	ft_init_map(void)
 static void	ft_fill_matrix(t_map *map, int fd)
 {
 	char		*line;
-	int			reading_map;
+	bool		reading_map;
 
-	reading_map = FALSE;
+	reading_map = false;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
 		line = ft_free_to_trim(line, "\t\n");
-		if (ft_is_line_valid(line) == TRUE)
+		if (ft_is_line_valid(line))
 		{
-			reading_map = TRUE;
+			reading_map = true;
 			map->matrix = ft_strsjoin(map->matrix, ft_strdup(line));
 			if (ft_strlen(line) > map->width)
 				map->width = ft_strlen(line);
 			map->height++;
 		}
-		else if (reading_map == TRUE)
+		else if (reading_map)
 		{
 			free(line);
 			ft_error("invalid map");

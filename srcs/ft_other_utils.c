@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:33:13 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 23:46:26 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:46:02 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ char	**ft_strsjoin(char **strs, char *str)
 	return (new_strs);
 }
 
-int	ft_is_valid_rgb(int r, int g, int b)
+bool	ft_is_valid_rgb(int r, int g, int b)
 {
 	if (r < 0 || r > 255)
-		return (FALSE);
+		return (false);
 	if (g < 0 || g > 255)
-		return (FALSE);
+		return (false);
 	if (b < 0 || b > 255)
-		return (FALSE);
-	return (TRUE);
+		return (false);
+	return (true);
 }
 
 int	dir_from_id(char *identifier)

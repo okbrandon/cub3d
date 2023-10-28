@@ -6,13 +6,13 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:36:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 20:49:59 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:45:21 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	ft_is_wall(float x, float y, t_cub *cub)
+static bool	ft_is_wall(float x, float y, t_cub *cub)
 {
 	char	**worldmap;
 
@@ -20,8 +20,8 @@ static int	ft_is_wall(float x, float y, t_cub *cub)
 		ft_error("map not found");
 	worldmap = cub->map.matrix;
 	if (worldmap[(int)x][(int)y] == '1')
-		return (TRUE);
-	return (FALSE);
+		return (true);
+	return (false);
 }
 
 static void	ft_move_up_down(int keycode, t_cub *cub)
