@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_args_checker.c                                  :+:      :+:    :+:   */
+/*   ft_args_checker_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:03:18 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:54:08 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:03:14 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-static char	*ft_get_file_extension(char *filename)
+char	*ft_get_file_extension(char *filename)
 {
 	int		length;
 	int		i;

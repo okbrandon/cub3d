@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:51:39 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:03:30 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void	ft_raycast(t_cub *cub);
 void	ft_draw_textures(t_cub *cub, int x);
 
 /* ft_args_checker.c */
+char	*ft_get_file_extension(char *filename);
 void	ft_check_args(int argc, char **argv);
 
 /* ft_key_handler.c */

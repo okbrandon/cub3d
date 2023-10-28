@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_scan.c                                          :+:      :+:    :+:   */
+/*   ft_scan_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:44:26 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 14:53:44 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:03:58 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ int	*scan_rgb(char *identifier, char *line)
 		ft_error("rgb format error");
 	if (!ft_is_str_digit(rgb_str[0]) || !ft_is_str_digit(rgb_str[1])
 		|| !ft_is_str_digit(rgb_str[2]))
-	{
 		ft_error("rgb must be digit");
-	}
 	rgb[0] = ft_atoi(rgb_str[0]);
 	rgb[1] = ft_atoi(rgb_str[1]);
 	rgb[2] = ft_atoi(rgb_str[2]);
