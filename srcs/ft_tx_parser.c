@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tx_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:50 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/26 19:06:00 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:31:06 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,16 @@ t_textures	ft_texture_parser(t_cub *cub, char *path)
 {
 	int			fd;
 	char		*line;
-	char		*tmp;
 	t_textures	textures;
 
 	ft_tx_init(&textures);
 	fd = open(path, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		ft_error("file not found");
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		tmp = line;
-		line = ft_strtrim(line, " \t");
-		free(tmp);
+		line = ft_free_to_trim(line, " \t");
 		if (line[0] == 'N' || line[0] == 'S' || line[0] == 'E'
 			|| line[0] == 'W')
 			parse_texture(cub, textures, line);

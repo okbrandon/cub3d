@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/27 23:31:39 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/28 10:36:34 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS			= cub3d.c \
 				  ft_scan.c \
 				  ft_tx_parser.c \
 				  ft_floodfill.c \
+				  ft_floodfill_utils.c \
 				  ft_free_utils.c \
 
 LIBFT_LIB		= libft/libft.a

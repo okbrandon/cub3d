@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:02:51 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/27 23:48:58 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:42:58 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_is_matrix_valid(t_map map, int *spawn)
 		{
 			if (map.matrix[i][j] == 'N' || map.matrix[i][j] == 'S' \
 				|| map.matrix[i][j] == 'E' || map.matrix[i][j] == 'W')
-				spawn++;
+				(*spawn)++;
 			if (*spawn > 1)
 			{
 				ft_error("Map contains more than one spawn point (N, S, E, W)");

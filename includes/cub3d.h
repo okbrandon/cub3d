@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 23:32:27 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:36:18 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,11 @@ void	ft_find_player(t_map *map);
 /* ft_scan.c */
 int		*scan_rgb(char *identifier, char *line);
 int		ft_strslen(char **strs);
+
+/* ft_floodfill_utils.c */
+void	fl_find_player(t_map map, int *sr, int *sc);
+bool	fl_visited_boundary(bool **visited, t_map map);
+void	fl_free(bool **visited, t_map map);
 
 /* ft_floodfill.c */
 bool	fl_can_exit(t_map map);
