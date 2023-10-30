@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 16:03:30 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/30 22:28:32 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@
 
 # define MOVE_SPEED		0.125
 # define ROT_SPEED		0.075
+
+# define MINIMAP_MULT	8
 
 typedef struct s_player
 {
@@ -176,6 +178,7 @@ int		ft_strslen(char **strs);
 void	fl_find_player(t_map map, int *sr, int *sc);
 bool	fl_visited_boundary(bool **visited, t_map map);
 void	fl_free(bool **visited, t_map map);
+void	ft_draw_square(t_cub *cub, int x, int y, int color);
 
 /* ft_floodfill.c */
 bool	fl_can_exit(t_map map);

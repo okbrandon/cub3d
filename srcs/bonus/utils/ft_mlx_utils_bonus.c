@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx_utils.c                                     :+:      :+:    :+:   */
+/*   ft_mlx_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:25:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:52:48 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/30 22:27:43 by evmorvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,28 @@ int	ft_get_pixel_color(t_mlx *mlx, int x, int y)
 	return (*(unsigned int *) dst);
 }
 
+void	ft_draw_minimap(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < cub->map.height)
+	{
+		j = 0;
+		while (j < ft_strlen(cub->map.matrix[i]))
+		{
+			if (cub->map.matrix[i][j] == '1')
+				ft_draw_square(cub, j * MINIMAP_MULT + 10, i * MINIMAP_MULT \
+					+ 10, 0x000000);
+			j++;
+		}
+		i++;
+	}
+	ft_draw_square(cub, (int) cub->player.pos_y * MINIMAP_MULT + 10,
+		(int) cub->player.pos_x * MINIMAP_MULT + 10, MINIMAP_MULT, 0xFF0000);
+}
+
 int	ft_img_renderer(t_cub *cub)
 {
 	t_mlx	*mlx;
@@ -48,6 +70,7 @@ int	ft_img_renderer(t_cub *cub)
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
 			&mlx->line_length, &mlx->endian);
 	ft_raycast(cub);
+	ft_draw_minimap(cub);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);
 	return (0);
 }
