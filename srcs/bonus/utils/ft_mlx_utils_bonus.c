@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:25:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/30 22:27:43 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:53:59 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_draw_minimap(t_cub *cub)
 		i++;
 	}
 	ft_draw_square(cub, (int) cub->player.pos_y * MINIMAP_MULT + 10,
-		(int) cub->player.pos_x * MINIMAP_MULT + 10, MINIMAP_MULT, 0xFF0000);
+		(int) cub->player.pos_x * MINIMAP_MULT + 10, 0xFF0000);
 }
 
 int	ft_img_renderer(t_cub *cub)
