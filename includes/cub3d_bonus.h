@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 11:35:24 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:15:46 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,23 @@
 
 # define TEX_WIDTH		64
 # define TEX_HEIGHT		64
+# define SPRITE_WIDTH	24
+# define SPRITE_HEIGHT	24
+
+# define U_DIV			1.0
+# define V_DIV			1.0
+# define V_MOVE			0.0
 
 # define DIR_NORTH		0
 # define DIR_SOUTH		1
 # define DIR_WEST		2
 # define DIR_EAST		3
+# define FST_SPRITE		4
+# define SND_SPRITE		5
+# define TRD_SPRITE		6
+# define FRTH_SPRITE	7
+# define FITH_SPRITE	8
+# define TEXTURES_COUNT	9
 
 # define KEY_DOOR_OPEN	31
 # define KEY_DOOR_CLOSE	8
@@ -86,19 +98,28 @@ typedef struct s_mlx
 	int				endian;
 }			t_mlx;
 
+typedef struct s_sprite
+{
+	t_vector	pos;
+	double		dist;
+}				t_sprite;
+
 typedef struct s_map
 {
+	int				sprites_count;
 	int				width;
 	int				height;
 	int				player_x;
 	int				player_y;
 	char			player_dir;
 	char			**matrix;
+	t_sprite		*sprites;
 }				t_map;
 
 typedef struct s_textures
 {
 	t_mlx	*mlx_textures;
+	int		current_sprite;
 	int		floor;
 	int		ceiling;
 }			t_textures;
@@ -127,7 +148,27 @@ typedef struct s_raycast
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
+	int		*z_buffer;
 }			t_raycast;
+
+typedef struct s_spritecast
+{
+	double	sprite_x;
+	double	sprite_y;
+	double	inv_det;
+	double	transform_x;
+	double	transform_y;
+	int		screen_x;
+	int		sprite_height;
+	int		sprite_width;
+	int		draw_start_x;
+	int		draw_start_y;
+	int		draw_end_x;
+	int		draw_end_y;
+	int		tex_x;
+	int		tex_y;
+	int		v_move_screen;
+}				t_spritecast;
 
 typedef struct s_cub
 {
@@ -136,69 +177,83 @@ typedef struct s_cub
 	t_map			map;
 	t_textures		textures;
 	t_raycast		raycast;
+	t_spritecast	spritecast;
 	char			*filepath;
 }				t_cub;
 
 /* ft_initializer.c */
-t_cub	*ft_init_cub(char *filepath);
+t_cub			*ft_init_cub(char *filepath);
 
 /* ft_raycaster.c */
-void	ft_raycast(t_cub *cub);
+void			ft_raycast(t_cub *cub);
 
-/* ft_drawerc.c */
-void	ft_draw_textures(t_cub *cub, int x);
+/* ft_drawer.c */
+void			ft_draw_textures(t_cub *cub, int x);
 
 /* ft_args_checker.c */
-char	*ft_get_file_extension(char *filename);
-void	ft_check_args(int argc, char **argv);
+char			*ft_get_file_extension(char *filename);
+void			ft_check_args(int argc, char **argv);
 
 /* ft_key_handler.c */
-bool	ft_is_wall(float x, float y, t_cub *cub);
-int		ft_key_press_handler(int keycode, t_cub *cub);
-
-/* ft_door_handler.c */
-void	ft_interact_with_door(t_cub *cub, int keycode);
+bool			ft_is_wall(float x, float y, t_cub *cub);
+int				ft_key_press_handler(int keycode, t_cub *cub);
 
 /* ft_mlx_utils.c */
-int		ft_img_renderer(t_cub *cub);
-int		ft_get_pixel_color(t_mlx *mlx, int x, int y);
-void	ft_mlx_pixel_put(t_cub *cub, int x, int y, int color);
-int		ft_to_trgb(int t, int r, int g, int b);
+int				ft_img_renderer(t_cub *cub);
+int				ft_get_pixel_color(t_mlx *mlx, int x, int y);
+void			ft_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+int				ft_to_trgb(int t, int r, int g, int b);
 
 /* ft_other_utils.c */
-double	ft_abs(double x);
-void	ft_error(char *message);
-bool	ft_is_valid_rgb(int r, int g, int b);
-char	**ft_strsjoin(char **strs, char *str);
-int		dir_from_id(char *identifier);
+double			ft_abs(double x);
+void			ft_error(char *message);
+bool			ft_is_valid_rgb(int r, int g, int b);
+char			**ft_strsjoin(char **strs, char *str);
+int				dir_from_id(char *identifier);
 
 /* ft_parser.c */
-t_map	ft_map_parser(char *path);
+t_map			ft_map_parser(char *path);
 
 /* ft_tx_parser.c */
-t_textures	ft_texture_parser(t_cub *cub, char *path);
+t_textures		ft_texture_parser(t_cub *cub, char *path);
 
 /* ft_parser_utils.c */
-bool	ft_is_map_valid(t_map map);
-bool	ft_is_line_valid(char *line);
-void	ft_find_player(t_map *map);
+bool			ft_is_map_valid(t_map map);
+bool			ft_is_line_valid(char *line);
+void			ft_find_player(t_map *map);
 
 /* ft_scan.c */
-int		*scan_rgb(char *identifier, char *line);
-int		ft_strslen(char **strs);
+int				*scan_rgb(char *identifier, char *line);
+int				ft_strslen(char **strs);
 
 /* ft_floodfill_utils.c */
-void	fl_find_player(t_map map, int *sr, int *sc);
-bool	fl_visited_boundary(bool **visited, t_map map);
-void	fl_free(bool **visited, t_map map);
+void			fl_find_player(t_map map, int *sr, int *sc);
+bool			fl_visited_boundary(bool **visited, t_map map);
+void			fl_free(bool **visited, t_map map);
 
 /* ft_floodfill.c */
-bool	fl_can_exit(t_map map);
+bool			fl_can_exit(t_map map);
 
 /* ft_free_utils.c */
-int		ft_close(t_cub *cub);
+int				ft_close(t_cub *cub);
+
+/* ft_door_utils.c */
+void			ft_interact_with_door(t_cub *cub, int keycode);
+
+/* ft_sprite_utils.c */
+void			ft_sort_sprites_by_dist(t_cub *cub);
+void			ft_apply_sprite_texture(t_cub *cub, int direction, int x, int y);
+void			ft_find_sprites(t_map *map);
 
 /* ft_minimap.c */
-void	ft_draw_minimap(t_cub *cub);
+void			ft_draw_minimap(t_cub *cub);
+
+/* ft_spritecaster.c */
+void			ft_spritecast(t_cub *cub);
+
+/* ft_sprite_init.c */
+t_spritecast	ft_init_spritecast(void);
+void			ft_init_sprites_textures(t_cub *cub, t_textures *textures);
+int				ft_run_sprite_cycle(t_cub *cub);
 
 #endif

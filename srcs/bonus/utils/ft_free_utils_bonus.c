@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_utils.c                                    :+:      :+:    :+:   */
+/*   ft_free_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 23:30:52 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:53:00 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:26:24 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	ft_free_map(t_cub *cub)
 
 void	ft_free_textures(t_cub *cub)
 {
+	int	i;
+
+	i = 3;
 	if (!cub->textures.mlx_textures)
 		return ;
 	if (cub->textures.mlx_textures[DIR_NORTH].img)
@@ -38,6 +41,9 @@ void	ft_free_textures(t_cub *cub)
 	if (cub->textures.mlx_textures[DIR_WEST].img)
 		mlx_destroy_image(cub->mlx.mlx,
 			cub->textures.mlx_textures[DIR_WEST].img);
+	while (++i < TEXTURES_COUNT)
+		if (cub->textures.mlx_textures[i].img)
+			mlx_destroy_image(cub->mlx.mlx, cub->textures.mlx_textures[i].img);
 	free(cub->textures.mlx_textures);
 }
 
@@ -51,6 +57,7 @@ int	ft_close(t_cub *cub)
 		mlx_destroy_image(cub->mlx.mlx, cub->mlx.img);
 	ft_free_map(cub);
 	ft_free_textures(cub);
+	free(cub->raycast.z_buffer);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

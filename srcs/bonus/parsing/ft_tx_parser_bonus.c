@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:50 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/28 16:05:45 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:17:21 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,24 @@ static void	parse_texture(t_cub *cub, t_textures texture, char *line, int dir)
 
 static void	ft_tx_init(t_textures *textures)
 {
-	textures->mlx_textures = malloc(sizeof(t_mlx) * 5);
+	int	i;
+
+	i = -1;
+	textures->mlx_textures = malloc(sizeof(t_mlx) * (TEXTURES_COUNT + 1));
 	if (!textures->mlx_textures)
 		ft_error("malloc error");
+	textures->current_sprite = FST_SPRITE;
 	textures->ceiling = -1;
 	textures->floor = -1;
-	textures->mlx_textures[DIR_NORTH].img = NULL;
-	textures->mlx_textures[DIR_SOUTH].img = NULL;
-	textures->mlx_textures[DIR_WEST].img = NULL;
-	textures->mlx_textures[DIR_EAST].img = NULL;
+	while (++i < TEXTURES_COUNT + 1)
+		textures->mlx_textures[i].img = NULL;
 }
 
 static void	ft_check_textures(t_textures textures)
 {
+	int	i;
+
+	i = 3;
 	if (textures.ceiling == -1 || textures.floor == -1)
 		ft_error("missing color");
 	if (textures.mlx_textures[DIR_NORTH].img == NULL)
@@ -92,6 +97,9 @@ static void	ft_check_textures(t_textures textures)
 		ft_error("missing west texture");
 	if (textures.mlx_textures[DIR_EAST].img == NULL)
 		ft_error("missing east texture");
+	while (++i < TEXTURES_COUNT)
+		if (textures.mlx_textures[i].img == NULL)
+			ft_error("missing door texture");
 }
 
 t_textures	ft_texture_parser(t_cub *cub, char *path)
@@ -118,6 +126,7 @@ t_textures	ft_texture_parser(t_cub *cub, char *path)
 		free(line);
 	}
 	close(fd);
+	ft_init_sprites_textures(cub, &textures);
 	ft_check_textures(textures);
 	return (textures);
 }

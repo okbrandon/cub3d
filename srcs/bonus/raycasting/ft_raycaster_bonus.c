@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 11:04:12 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 19:09:02 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,7 @@ void	ft_raycast(t_cub *cub)
 		ft_apply_dda_algorithm(cub, &cub->raycast);
 		ft_calc_line_height(cub);
 		ft_draw_textures(cub, x);
+		cub->raycast.z_buffer[x] = cub->raycast.perp_wall_dist;
 	}
+	ft_spritecast(cub);
 }

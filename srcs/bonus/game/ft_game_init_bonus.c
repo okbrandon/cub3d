@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 10:06:23 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:10:35 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,9 @@ static t_raycast	ft_init_raycast(void)
 {
 	t_raycast	ray;
 
-	ray.ray_dir_x = 0;
-	ray.ray_dir_y = 0;
 	ray.line_height = 0;
 	ray.draw_from = 0;
 	ray.draw_to = 0;
-	ray.map_x = 0;
-	ray.map_y = 0;
 	ray.tex_x = 0;
 	ray.tex_y = 0;
 	ray.tex_step = 0;
@@ -112,12 +108,13 @@ static t_raycast	ft_init_raycast(void)
 	ray.side_hit = false;
 	ray.wall_hit = false;
 	ray.door_hit = false;
+	ray.z_buffer = ft_calloc(WIN_WIDTH + 1, sizeof(int));
 	return (ray);
 }
 
 t_cub	*ft_init_cub(char *filepath)
 {
-	t_cub	*cub;
+	t_cub		*cub;
 
 	cub = ft_calloc(1, sizeof(t_cub));
 	if (!cub)
@@ -127,6 +124,8 @@ t_cub	*ft_init_cub(char *filepath)
 	cub->map = ft_map_parser(filepath);
 	cub->player = ft_init_player(cub->map);
 	cub->raycast = ft_init_raycast();
+	cub->spritecast = ft_init_spritecast();
 	cub->filepath = filepath;
+	ft_find_sprites(&cub->map);
 	return (cub);
 }

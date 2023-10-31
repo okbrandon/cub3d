@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:02:51 by evmorvan          #+#    #+#             */
-/*   Updated: 2023/10/31 10:56:42 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:15:42 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static bool	ft_is_valid_map_char(char c)
 {
 	if (c == '0' || c == '1' || c == 'C' || c == 'O' || \
-		c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'X')
 		return (true);
 	return (false);
 }

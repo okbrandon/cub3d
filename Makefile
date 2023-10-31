@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/31 11:27:06 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/10/31 20:16:24 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ SRCS			= $(addprefix mandatory/, \
 )
 SRCS_B			= $(addprefix bonus/, \
 						cub3d_bonus.c \
-						game/ft_door_handler_bonus.c \
 						game/ft_game_init_bonus.c \
 						game/ft_key_handler_bonus.c \
 						game/ft_minimap_bonus.c \
+						game/ft_sprite_init_bonus.c \
 						parsing/ft_args_checker_bonus.c \
 						parsing/ft_floodfill_bonus.c \
 						parsing/ft_parser_bonus.c \
@@ -53,11 +53,14 @@ SRCS_B			= $(addprefix bonus/, \
 						parsing/ft_tx_parser_bonus.c \
 						raycasting/ft_drawer_bonus.c \
 						raycasting/ft_raycaster_bonus.c \
+						raycasting/ft_spritecaster_bonus.c \
+						utils/ft_door_utils_bonus.c \
 						utils/ft_floodfill_utils_bonus.c \
 						utils/ft_free_utils_bonus.c \
 						utils/ft_mlx_utils_bonus.c \
 						utils/ft_other_utils_bonus.c \
 						utils/ft_parser_utils_bonus.c \
+						utils/ft_sprite_utils_bonus.c \
 )
 
 LIBFT_LIB		= libft/libft.a
