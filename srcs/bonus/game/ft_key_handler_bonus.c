@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_key_handler.c                                   :+:      :+:    :+:   */
+/*   ft_key_handler_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:36:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:54:16 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:35:17 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-static bool	ft_is_wall(float x, float y, t_cub *cub)
+bool	ft_is_wall(float x, float y, t_cub *cub)
 {
 	char	**worldmap;
 
 	if (!cub->map.matrix)
 		ft_error("map not found");
 	worldmap = cub->map.matrix;
-	if (worldmap[(int)x][(int)y] == '1')
+	if (worldmap[(int)x][(int)y] == '1' || worldmap[(int)x][(int)y] == 'C')
 		return (true);
 	return (false);
 }
@@ -100,6 +100,8 @@ int	ft_key_press_handler(int keycode, t_cub *cub)
 {
 	if (keycode == KEY_ESCAPE)
 		ft_close(cub);
+	if (keycode == KEY_DOOR_OPEN || keycode == KEY_DOOR_CLOSE)
+		ft_interact_with_door(cub, keycode);
 	ft_move_up_down(keycode, cub);
 	ft_move_left_right(keycode, cub);
 	ft_move_rotate(keycode, cub);

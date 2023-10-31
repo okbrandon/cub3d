@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 10:05:37 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:35:24 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define DIR_WEST		2
 # define DIR_EAST		3
 
+# define KEY_DOOR_OPEN	31
+# define KEY_DOOR_CLOSE	8
 # define KEY_FORWARD	13
 # define KEY_BACKWARD	1
 # define KEY_LEFT		0
@@ -54,6 +56,12 @@
 # define ROT_SPEED		0.075
 
 # define MINIMAP_MULT	8
+
+typedef struct s_vector
+{
+	double			x;
+	double			y;
+}				t_vector;
 
 typedef struct s_player
 {
@@ -145,7 +153,11 @@ char	*ft_get_file_extension(char *filename);
 void	ft_check_args(int argc, char **argv);
 
 /* ft_key_handler.c */
+bool	ft_is_wall(float x, float y, t_cub *cub);
 int		ft_key_press_handler(int keycode, t_cub *cub);
+
+/* ft_door_handler.c */
+void	ft_interact_with_door(t_cub *cub, int keycode);
 
 /* ft_mlx_utils.c */
 int		ft_img_renderer(t_cub *cub);

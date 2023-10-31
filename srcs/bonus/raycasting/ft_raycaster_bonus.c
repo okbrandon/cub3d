@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 10:06:02 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:04:12 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ static void	ft_init_dda_algorithm(t_cub *cub)
 	}
 }
 
-void	ft_apply_dda_algorithm(t_cub *cub)
+void	ft_apply_dda_algorithm(t_cub *cub, t_raycast *ray)
 {
-	t_raycast	*ray;
-
-	ray = &cub->raycast;
 	ray->wall_hit = false;
+	ray->door_hit = false;
 	while (!ray->wall_hit)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -82,8 +80,10 @@ void	ft_apply_dda_algorithm(t_cub *cub)
 			ray->map_y += ray->step_y;
 			ray->side_hit = true;
 		}
-		if (cub->map.matrix[ray->map_x][ray->map_y] == '1')
+		if (ft_is_wall(ray->map_x, ray->map_y, cub))
 			ray->wall_hit = true;
+		if (cub->map.matrix[ray->map_x][ray->map_y] == 'C')
+			ray->door_hit = true;
 	}
 	if (!ray->side_hit)
 		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
@@ -114,7 +114,7 @@ void	ft_raycast(t_cub *cub)
 	{
 		ft_init_ray_directions(cub, x);
 		ft_init_dda_algorithm(cub);
-		ft_apply_dda_algorithm(cub);
+		ft_apply_dda_algorithm(cub, &cub->raycast);
 		ft_calc_line_height(cub);
 		ft_draw_textures(cub, x);
 	}

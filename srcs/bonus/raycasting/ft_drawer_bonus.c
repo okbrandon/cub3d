@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_drawer.c                                        :+:      :+:    :+:   */
+/*   ft_drawer_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:37:43 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:53:26 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:00:09 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ static void	ft_apply_texture(t_cub *cub, int direction, int x)
 {
 	int	color;
 
-	color = ft_get_pixel_color(&cub->textures.mlx_textures[direction], \
-		cub->raycast.tex_x, cub->raycast.tex_y);
+	if (!cub->raycast.door_hit)
+		color = ft_get_pixel_color(&cub->textures.mlx_textures[direction], \
+			cub->raycast.tex_x, cub->raycast.tex_y);
+	else
+		color = ft_to_trgb(0, 255, 0, 0);
 	ft_mlx_pixel_put(cub, x, cub->raycast.draw_from, color);
 }
 
