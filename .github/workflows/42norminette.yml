@@ -3,13 +3,13 @@ name: Norminette v3
 on:
   push:
     paths:
-      - '/srcs/**.c'
-      - '/includes/**.h'
+      - './srcs/**.c'
+      - './includes/**.h'
     branches: [ master ]
   pull_request:
     paths:
-      - '/srcs/**.c'
-      - '/includes/**.h'
+      - './srcs/**.c'
+      - './includes/**.h'
     branches: [ master ]
 
 jobs:
