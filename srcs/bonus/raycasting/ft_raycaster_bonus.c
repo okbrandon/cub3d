@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_raycaster.c                                     :+:      :+:    :+:   */
+/*   ft_raycaster_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:22:53 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:53:17 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:06:02 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,25 @@ void	ft_apply_dda_algorithm(t_cub *cub)
 	t_raycast	*ray;
 
 	ray = &cub->raycast;
-	ray->wall_hit = 0;
+	ray->wall_hit = false;
 	while (!ray->wall_hit)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
-			ray->side_hit = 0;
+			ray->side_hit = false;
 		}
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
-			ray->side_hit = 1;
+			ray->side_hit = true;
 		}
 		if (cub->map.matrix[ray->map_x][ray->map_y] == '1')
-			ray->wall_hit = 1;
+			ray->wall_hit = true;
 	}
-	if (ray->side_hit == 0)
+	if (!ray->side_hit)
 		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
 		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;

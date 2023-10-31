@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 15:54:55 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:07:28 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ typedef struct s_textures
 
 typedef struct s_raycast
 {
-	int		wall_hit;
-	int		side_hit;
+	bool	wall_hit;
+	bool	side_hit;
 	int		line_height;
 	int		draw_from;
 	int		draw_to;

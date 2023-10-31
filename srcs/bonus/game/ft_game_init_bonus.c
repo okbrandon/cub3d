@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_game_init.c                                     :+:      :+:    :+:   */
+/*   ft_game_init_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/28 14:54:23 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:06:23 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,9 @@ static t_raycast	ft_init_raycast(void)
 	ray.perp_wall_dist = 0;
 	ray.step_x = 0;
 	ray.step_y = 0;
-	ray.side_hit = 0;
-	ray.wall_hit = 0;
+	ray.side_hit = false;
+	ray.wall_hit = false;
+	ray.door_hit = false;
 	return (ray);
 }
 
