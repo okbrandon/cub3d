@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_floodfill_utils_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:32:45 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/30 22:28:19 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:55:49 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,6 @@ bool	fl_visited_boundary(bool **visited, t_map map)
 		j++;
 	}
 	return (false);
-}
-
-void	ft_draw_square(t_cub *cub, int x, int y, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < MINIMAP_MULT)
-	{
-		j = 0;
-		while (j < MINIMAP_MULT)
-		{
-			ft_mlx_pixel_put(cub, x + i, y + j, color);
-			j++;
-		}
-		i++;
-	}
 }
 
 void	fl_free(bool **visited, t_map map)

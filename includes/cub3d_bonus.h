@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evmorvan <evmorvan@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/30 22:28:32 by evmorvan         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:56:09 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,12 +178,14 @@ int		ft_strslen(char **strs);
 void	fl_find_player(t_map map, int *sr, int *sc);
 bool	fl_visited_boundary(bool **visited, t_map map);
 void	fl_free(bool **visited, t_map map);
-void	ft_draw_square(t_cub *cub, int x, int y, int color);
 
 /* ft_floodfill.c */
 bool	fl_can_exit(t_map map);
 
 /* ft_free_utils.c */
 int		ft_close(t_cub *cub);
+
+/* ft_minimap.c */
+void	ft_draw_minimap(t_cub *cub);
 
 #endif

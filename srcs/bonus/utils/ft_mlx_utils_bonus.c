@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 19:25:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 09:53:59 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:55:42 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,6 @@ int	ft_get_pixel_color(t_mlx *mlx, int x, int y)
 	dst = mlx->addr + (y * mlx->line_length + x
 			* (mlx->bits_per_pixel / 8));
 	return (*(unsigned int *) dst);
-}
-
-void	ft_draw_minimap(t_cub *cub)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < cub->map.height)
-	{
-		j = 0;
-		while (j < ft_strlen(cub->map.matrix[i]))
-		{
-			if (cub->map.matrix[i][j] == '1')
-				ft_draw_square(cub, j * MINIMAP_MULT + 10, i * MINIMAP_MULT \
-					+ 10, 0x000000);
-			j++;
-		}
-		i++;
-	}
-	ft_draw_square(cub, (int) cub->player.pos_y * MINIMAP_MULT + 10,
-		(int) cub->player.pos_x * MINIMAP_MULT + 10, 0xFF0000);
 }
 
 int	ft_img_renderer(t_cub *cub)
