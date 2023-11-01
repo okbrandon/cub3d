@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/11/01 20:31:09 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/11/01 20:54:40 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,15 @@ GREY			= \033[38;5;240m
 RESET			= \033[0m
 BOLD			= \033[1m
 CLEAR			= \r\033[K
+
+# Checking OS type
+UNAME_S 		= $(shell uname -s)
+
+ifneq ($(UNAME_S),Linux)
+ifneq ($(UNAME_S),Darwin)
+	$(error Unsupported OS $(UNAME_S))
+endif
+endif
 
 # Executable and compilation
 NAME			= cub3d
@@ -42,7 +51,7 @@ SRCS			= $(addprefix mandatory/, \
 )
 SRCS_B			= $(addprefix bonus/, \
 						cub3d_bonus.c \
-						game/ft_game_cycle_bonus.c \
+						game/ft_game_cycle_$(shell echo $(UNAME_S) | tr A-Z a-z)_bonus.c \
 						game/ft_game_init_bonus.c \
 						game/ft_key_handler_bonus.c \
 						game/ft_minimap_bonus.c \
@@ -77,15 +86,6 @@ OBJS_B			= ${addprefix ${OBJ_DIR}, ${SRCS_B:.c=.o}}
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -g -I $(LIBFT_LIB_DIR)/includes/
 RM				= rm -rf
-
-# Checking OS type
-UNAME_S 		= $(shell uname -s)
-
-ifneq ($(UNAME_S),Linux)
-ifneq ($(UNAME_S),Darwin)
-	$(error Unsupported OS $(UNAME_S))
-endif
-endif
 
 # Adding a specific flag for MacOS not Intel based
 ifeq ($(UNAME_S),Darwin)
