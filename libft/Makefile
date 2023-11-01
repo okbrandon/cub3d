@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 11:45:32 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/27 22:37:52 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/11/01 18:51:16 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,9 +83,23 @@ RM			  	= rm -rf
 CC			  	= gcc
 CFLAGS		 	= -Wall -Wextra -Werror
 
+# Checking OS type
+UNAME_S 		= $(shell uname -s)
+
+ifneq ($(UNAME_S),Linux)
+ifneq ($(UNAME_S),Darwin)
+	$(error Unsupported OS $(UNAME_S))
+endif
+endif
+
+# Adding a specific flag for MacOS not Intel based
+ifeq ($(UNAME_S),Darwin)
+	CFLAGS += -arch x86_64
+endif
+
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 	@printf "${CLEAR}${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Compiling ${GREEN}%s${RESET}...${GREY}" ${notdir $<}
-	@${CC} ${CFLAGS} -I${SRC_DIR} -arch x86_64 -c $< -o $@
+	@${CC} ${CFLAGS} -I${SRC_DIR} -c $< -o $@
 
 all:			${NAME}
 

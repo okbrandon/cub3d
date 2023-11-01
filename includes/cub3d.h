@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 10:07:28 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:06:42 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
 # include "../libft/includes/ft_printf.h"
-# include "../mlx/mlx.h"
+# include "../mlx/macos/mlx.h"
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>

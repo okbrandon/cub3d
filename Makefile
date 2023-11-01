@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/11/01 18:30:04 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/11/01 19:18:55 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,16 +67,36 @@ SRCS_B			= $(addprefix bonus/, \
 LIBFT_LIB		= libft/libft.a
 LIBFT_LIB_DIR	= libft
 
-MLX_LIB			= mlx/libmlx.a
-MLX_LIB_DIR		= mlx
+MLX_LIB			= mlx/macos/libmlx.a
+MLX_LIB_DIR		= mlx/macos
 
 OBJ_DIR			= ./objs/
 OBJS			= ${addprefix ${OBJ_DIR}, ${SRCS:.c=.o}}
 OBJS_B			= ${addprefix ${OBJ_DIR}, ${SRCS_B:.c=.o}}
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -arch x86_64 -g -Imlx -I $(LIBFT_LIB_DIR)/includes/
+CFLAGS			= -Wall -Wextra -Werror -g -I $(LIBFT_LIB_DIR)/includes/
 RM				= rm -rf
+
+# Checking OS type
+UNAME_S 		= $(shell uname -s)
+
+ifneq ($(UNAME_S),Linux)
+ifneq ($(UNAME_S),Darwin)
+	$(error Unsupported OS $(UNAME_S))
+endif
+endif
+
+# Adding a specific flag for MacOS not Intel based
+ifeq ($(UNAME_S),Darwin)
+	CFLAGS += -arch x86_64 -Imlx/macos
+endif
+
+ifeq ($(UNAME_S),Linux)
+	CFLAGS += -Imlx/linux
+	MLX_LIB	= mlx/linux/libmlx.a
+	MLX_LIB_DIR	= mlx/linux
+endif
 
 ifdef MAKEBONUS
 	OBJS = ${OBJS_B}
@@ -88,10 +108,19 @@ ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 
 all: 			$(NAME)
 
+ifeq ($(UNAME_S),Darwin)
 $(NAME): 		${LIBFT_LIB} $(MLX_LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT_LIB)
+	@$(CC) $(CFLAGS) $(OBJS) -Lmlx/macos -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT_LIB)
 	@clear
 	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
+endif
+
+ifeq ($(UNAME_S),Linux)
+$(NAME): 		${LIBFT_LIB} $(MLX_LIB) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -Lmlx/linux -lmlx/linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_LIB)
+	@clear
+	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
+endif
 
 $(LIBFT_LIB_DIR):
 	@$(MAKE) -C $(LIBFT_LIB_DIR)
