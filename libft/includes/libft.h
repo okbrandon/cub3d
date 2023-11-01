@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:15:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/27 22:38:28 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:30:07 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 typedef struct s_list
 {

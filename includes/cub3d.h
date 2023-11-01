@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/11/01 19:06:42 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:31:28 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
 # include "../libft/includes/ft_printf.h"
-# include "../mlx/macos/mlx.h"
+# if defined(__APPLE__) && defined(__MACH__)
+#  include "../mlx/macos/mlx.h"
+#  include "../mlx/macos/keys.h"
+# else
+#  include "../mlx/linux/mlx.h"
+#  include "../mlx/linux/keys.h"
+# endif
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
@@ -41,14 +47,6 @@
 # define DIR_SOUTH		1
 # define DIR_WEST		2
 # define DIR_EAST		3
-
-# define KEY_FORWARD	13
-# define KEY_BACKWARD	1
-# define KEY_LEFT		0
-# define KEY_RIGHT		2
-# define KEY_ROT_LEFT	123
-# define KEY_ROT_RIGHT	124
-# define KEY_ESCAPE		53
 
 # define MOVE_SPEED		0.125
 # define ROT_SPEED		0.075

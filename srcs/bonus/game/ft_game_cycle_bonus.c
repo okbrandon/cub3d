@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:17:39 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/11/01 18:37:15 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:34:49 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	ft_mouse_handler(t_cub *cub)
 	mlx_mouse_hide();
 	mlx_mouse_get_pos(cub->mlx.window, &x, &y);
 	if (x > WIN_WIDTH / 2)
-		ft_move_rotate(KEY_ROT_RIGHT, cub);
+		ft_move_rotate(K_AR_R, cub);
 	else if (x < WIN_WIDTH / 2)
-		ft_move_rotate(KEY_ROT_LEFT, cub);
+		ft_move_rotate(K_AR_L, cub);
 	mlx_mouse_move(cub->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 }
 

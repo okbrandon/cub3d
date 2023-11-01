@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:05:33 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 20:12:35 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:33:25 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	ft_interact_with_door(t_cub *cub, int keycode)
 		dist = ft_get_dist_from_door(cub, door);
 		if (dist <= 1.85)
 		{
-			if (keycode == KEY_DOOR_OPEN && \
+			if (keycode == K_O && \
 					cub->map.matrix[(int)door.x][(int)door.y] == 'C')
 				cub->map.matrix[(int)door.x][(int)door.y] = 'O';
-			if (keycode == KEY_DOOR_CLOSE && \
+			if (keycode == K_D && \
 					cub->map.matrix[(int)door.x][(int)door.y] == 'O')
 				cub->map.matrix[(int)door.x][(int)door.y] = 'C';
 		}

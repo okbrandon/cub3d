@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/11/01 19:18:55 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/11/01 20:31:09 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,7 @@ endif
 
 ifeq ($(UNAME_S),Linux)
 $(NAME): 		${LIBFT_LIB} $(MLX_LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -Lmlx/linux -lmlx/linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_LIB)
+	@$(CC) $(CFLAGS) $(OBJS) -Lmlx/linux -lmlx -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_LIB)
 	@clear
 	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 endif
