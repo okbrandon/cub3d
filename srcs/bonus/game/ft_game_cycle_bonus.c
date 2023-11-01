@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
+/*   ft_game_cycle_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/22 22:01:19 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/11/01 18:29:23 by bsoubaig         ###   ########.fr       */
+/*   Created: 2023/11/01 18:17:39 by bsoubaig          #+#    #+#             */
+/*   Updated: 2023/11/01 18:37:15 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-int	main(int argc, char **argv)
+static void	ft_mouse_handler(t_cub *cub)
 {
-	t_cub		*cub;
+	int	x;
+	int	y;
 
-	ft_check_args(argc, argv);
-	cub = ft_init_cub(argv[1]);
+	if (!cub->track_mode)
+	{
+		mlx_mouse_show();
+		return ;
+	}
+	mlx_mouse_hide();
+	mlx_mouse_get_pos(cub->mlx.window, &x, &y);
+	if (x > WIN_WIDTH / 2)
+		ft_move_rotate(KEY_ROT_RIGHT, cub);
+	else if (x < WIN_WIDTH / 2)
+		ft_move_rotate(KEY_ROT_LEFT, cub);
+	mlx_mouse_move(cub->mlx.window, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+}
+
+int	ft_run_game_cycle(t_cub *cub)
+{
+	ft_run_sprite_cycle(cub);
+	ft_mouse_handler(cub);
 	ft_img_renderer(cub);
-	mlx_loop_hook(cub->mlx.mlx, ft_run_game_cycle, cub);
-	mlx_hook(cub->mlx.window, 2, 1L << 0, ft_key_press_handler, cub);
-	mlx_hook(cub->mlx.window, 17, 1L << 17, ft_close, cub);
-	mlx_loop(cub->mlx.mlx);
 	return (0);
 }

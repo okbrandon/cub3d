@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/10/31 20:16:24 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/11/01 18:30:04 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS			= $(addprefix mandatory/, \
 )
 SRCS_B			= $(addprefix bonus/, \
 						cub3d_bonus.c \
+						game/ft_game_cycle_bonus.c \
 						game/ft_game_init_bonus.c \
 						game/ft_key_handler_bonus.c \
 						game/ft_minimap_bonus.c \

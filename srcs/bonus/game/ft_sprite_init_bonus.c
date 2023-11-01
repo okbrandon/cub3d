@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:09:04 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 20:23:32 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:30:41 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ int	ft_run_sprite_cycle(t_cub *cub)
 	else
 		frames = 0;
 	frames++;
-	ft_img_renderer(cub);
 	return (0);
 }

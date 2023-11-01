@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 20:15:46 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:34:43 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@
 # define KEY_ROT_LEFT	123
 # define KEY_ROT_RIGHT	124
 # define KEY_ESCAPE		53
+# define KEY_DIS_TRACK	49
 
 # define MOVE_SPEED		0.125
 # define ROT_SPEED		0.075
@@ -179,6 +180,7 @@ typedef struct s_cub
 	t_raycast		raycast;
 	t_spritecast	spritecast;
 	char			*filepath;
+	bool			track_mode;
 }				t_cub;
 
 /* ft_initializer.c */
@@ -194,8 +196,12 @@ void			ft_draw_textures(t_cub *cub, int x);
 char			*ft_get_file_extension(char *filename);
 void			ft_check_args(int argc, char **argv);
 
+/* ft_game_cycle.c */
+int				ft_run_game_cycle(t_cub *cub);
+
 /* ft_key_handler.c */
 bool			ft_is_wall(float x, float y, t_cub *cub);
+void			ft_move_rotate(int keycode, t_cub *cub);
 int				ft_key_press_handler(int keycode, t_cub *cub);
 
 /* ft_mlx_utils.c */

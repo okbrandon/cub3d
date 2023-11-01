@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:36:08 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 11:35:17 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:35:27 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	ft_move_left_right(int keycode, t_cub *cub)
 	}
 }
 
-static void	ft_move_rotate(int keycode, t_cub *cub)
+void	ft_move_rotate(int keycode, t_cub *cub)
 {
 	cub->player.old_dir_x = cub->player.dir_x;
 	cub->player.old_plane_x = cub->player.plane_x;
@@ -98,6 +98,8 @@ static void	ft_move_rotate(int keycode, t_cub *cub)
 
 int	ft_key_press_handler(int keycode, t_cub *cub)
 {
+	if (keycode == KEY_DIS_TRACK)
+		cub->track_mode = !cub->track_mode;
 	if (keycode == KEY_ESCAPE)
 		ft_close(cub);
 	if (keycode == KEY_DOOR_OPEN || keycode == KEY_DOOR_CLOSE)
@@ -105,6 +107,5 @@ int	ft_key_press_handler(int keycode, t_cub *cub)
 	ft_move_up_down(keycode, cub);
 	ft_move_left_right(keycode, cub);
 	ft_move_rotate(keycode, cub);
-	ft_img_renderer(cub);
 	return (0);
 }

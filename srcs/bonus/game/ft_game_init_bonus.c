@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:27:16 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 20:10:35 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:34:56 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ t_cub	*ft_init_cub(char *filepath)
 	cub->raycast = ft_init_raycast();
 	cub->spritecast = ft_init_spritecast();
 	cub->filepath = filepath;
+	cub->track_mode = true;
 	ft_find_sprites(&cub->map);
 	return (cub);
 }
