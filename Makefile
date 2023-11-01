@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 14:21:53 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/11/01 20:54:40 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/11/01 22:54:30 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,17 +87,19 @@ CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -g -I $(LIBFT_LIB_DIR)/includes/
 RM				= rm -rf
 
-# Adding a specific flag for MacOS not Intel based
+# Adding flag for MacOS not Intel based and associated mlx library
 ifeq ($(UNAME_S),Darwin)
 	CFLAGS += -arch x86_64 -Imlx/macos
 endif
 
+# Switching mlx library and associated flags for Linux
 ifeq ($(UNAME_S),Linux)
 	CFLAGS += -Imlx/linux
 	MLX_LIB	= mlx/linux/libmlx.a
 	MLX_LIB_DIR	= mlx/linux
 endif
 
+# Adding bonus objects if needed
 ifdef MAKEBONUS
 	OBJS = ${OBJS_B}
 endif
@@ -108,6 +110,7 @@ ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 
 all: 			$(NAME)
 
+# Compiling MacOS executable
 ifeq ($(UNAME_S),Darwin)
 $(NAME): 		${LIBFT_LIB} $(MLX_LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -Lmlx/macos -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT_LIB)
@@ -115,6 +118,7 @@ $(NAME): 		${LIBFT_LIB} $(MLX_LIB) $(OBJS)
 	@printf "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 endif
 
+# Compiling Linux executable
 ifeq ($(UNAME_S),Linux)
 $(NAME): 		${LIBFT_LIB} $(MLX_LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -Lmlx/linux -lmlx -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT_LIB)
