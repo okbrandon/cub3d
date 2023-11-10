@@ -21,10 +21,10 @@
 
 ## 👨‍🏫 Quick demonstration
 
-https://github.com/okbrandon/cub3d/assets/103316367/c71f3e76-506a-4ff5-80ed-e3de58ef8144
+https://github.com/okbrandon/cub3d/assets/103316367/a5891e51-d874-4185-985b-04f2dd00b293
 > Short demonstration for the **mandatory** part, running on the subject map `./maps/good/subject_map.cub`.
 
-https://github.com/okbrandon/cub3d/assets/103316367/482babc1-3668-419b-bc5c-0991598d8283
+https://github.com/okbrandon/cub3d/assets/103316367/8f0c05c4-f3b1-4c9d-97f1-6c1bc19a6532
 > Short demonstration for the **bonus** part, running on the subject map `./maps/good/subject_map.cub`.
 
 ## 📦 Installation
@@ -38,13 +38,14 @@ Compile the `cub3d`'s mandatory executable:
 ```sh
 make
 ```
-> [!NOTE]  
-> If you're on Linux, you'll need to install [some libraries](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html#compilation-on-linux) first.
 
 Compile the `cub3d`'s bonus executable:
 ```sh
 make bonus
 ```
+
+> [!NOTE]  
+> If you're on Linux, you'll need to install [some libraries](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html#compilation-on-linux) first.
 
 ## 📝 Usage
 
