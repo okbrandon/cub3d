@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/11/10 11:21:53 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:30:11 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
 # include "../libft/includes/ft_printf.h"
-# if defined(__APPLE__) && defined(__MACH__)
+# if defined(__APPLE__)
 #  include "../mlx/macos/mlx.h"
 #  include "../mlx/macos/keys.h"
 # else
