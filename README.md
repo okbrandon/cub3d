@@ -21,6 +21,12 @@
 
 ## 👨‍🏫 Quick demonstration
 
+https://github.com/okbrandon/cub3d/assets/103316367/c71f3e76-506a-4ff5-80ed-e3de58ef8144
+> Short demonstration for the **mandatory** part, running on the subject map `./maps/good/subject_map.cub`.
+
+https://github.com/okbrandon/cub3d/assets/103316367/482babc1-3668-419b-bc5c-0991598d8283
+> Short demonstration for the **bonus** part, running on the subject map `./maps/good/subject_map.cub`.
+
 ## 📦 Installation
 
 Clone the repository from GitHub:
@@ -67,13 +73,14 @@ If you want to insert a door in your map, you'll need to add a `C` for a closed 
 ```
 > [!NOTE]
 > The `E` is the player's spawn point, and the `C` is the door's spawn point.
+> To open the door in-game, you have to look at it and press `O`. To close it, press `C`.
 
 If you want to insert our animated sprite in your map, you'll need to add a `X` in your map file, like this:
 ```
 1111111111111111111111111
 1000000000010001000000001
 1000000000010001000000001
-100E0000X00C000O000000001
+100E0000X0000000000000001
 1000000000010001000000001
 1000000000010001000000001
 1111111111111111111111111
