@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/11/01 20:32:31 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:21:53 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,8 @@ void			ft_interact_with_door(t_cub *cub, int keycode);
 
 /* ft_sprite_utils.c */
 void			ft_sort_sprites_by_dist(t_cub *cub);
-void			ft_apply_sprite_texture(t_cub *cub, int direction, int x, int y);
+void			ft_apply_sprite_texture(t_cub *cub, int direction, \
+											int x, int y);
 void			ft_find_sprites(t_map *map);
 
 /* ft_minimap.c */

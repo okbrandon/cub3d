@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 22:02:20 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/11/01 20:31:28 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:21:29 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,58 +127,58 @@ typedef struct s_cub
 }				t_cub;
 
 /* ft_initializer.c */
-t_cub	*ft_init_cub(char *filepath);
+t_cub		*ft_init_cub(char *filepath);
 
 /* ft_raycaster.c */
-void	ft_raycast(t_cub *cub);
+void		ft_raycast(t_cub *cub);
 
 /* ft_drawerc.c */
-void	ft_draw_textures(t_cub *cub, int x);
+void		ft_draw_textures(t_cub *cub, int x);
 
 /* ft_args_checker.c */
-char	*ft_get_file_extension(char *filename);
-void	ft_check_args(int argc, char **argv);
+char		*ft_get_file_extension(char *filename);
+void		ft_check_args(int argc, char **argv);
 
 /* ft_key_handler.c */
-int		ft_key_press_handler(int keycode, t_cub *cub);
+int			ft_key_press_handler(int keycode, t_cub *cub);
 
 /* ft_mlx_utils.c */
-int		ft_img_renderer(t_cub *cub);
-int		ft_get_pixel_color(t_mlx *mlx, int x, int y);
-void	ft_mlx_pixel_put(t_cub *cub, int x, int y, int color);
-int		ft_to_trgb(int t, int r, int g, int b);
+int			ft_img_renderer(t_cub *cub);
+int			ft_get_pixel_color(t_mlx *mlx, int x, int y);
+void		ft_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+int			ft_to_trgb(int t, int r, int g, int b);
 
 /* ft_other_utils.c */
-double	ft_abs(double x);
-void	ft_error(char *message);
-bool	ft_is_valid_rgb(int r, int g, int b);
-char	**ft_strsjoin(char **strs, char *str);
-int		dir_from_id(char *identifier);
+double		ft_abs(double x);
+void		ft_error(char *message);
+bool		ft_is_valid_rgb(int r, int g, int b);
+char		**ft_strsjoin(char **strs, char *str);
+int			dir_from_id(char *identifier);
 
 /* ft_parser.c */
-t_map	ft_map_parser(char *path);
+t_map		ft_map_parser(char *path);
 
 /* ft_tx_parser.c */
 t_textures	ft_texture_parser(t_cub *cub, char *path);
 
 /* ft_parser_utils.c */
-bool	ft_is_map_valid(t_map map);
-bool	ft_is_line_valid(char *line);
-void	ft_find_player(t_map *map);
+bool		ft_is_map_valid(t_map map);
+bool		ft_is_line_valid(char *line);
+void		ft_find_player(t_map *map);
 
 /* ft_scan.c */
-int		*scan_rgb(char *identifier, char *line);
-int		ft_strslen(char **strs);
+int			*scan_rgb(char *identifier, char *line);
+int			ft_strslen(char **strs);
 
 /* ft_floodfill_utils.c */
-void	fl_find_player(t_map map, int *sr, int *sc);
-bool	fl_visited_boundary(bool **visited, t_map map);
-void	fl_free(bool **visited, t_map map);
+void		fl_find_player(t_map map, int *sr, int *sc);
+bool		fl_visited_boundary(bool **visited, t_map map);
+void		fl_free(bool **visited, t_map map);
 
 /* ft_floodfill.c */
-bool	fl_can_exit(t_map map);
+bool		fl_can_exit(t_map map);
 
 /* ft_free_utils.c */
-int		ft_close(t_cub *cub);
+int			ft_close(t_cub *cub);
 
 #endif
