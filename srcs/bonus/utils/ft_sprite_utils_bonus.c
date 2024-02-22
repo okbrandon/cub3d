@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:34:31 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/10/31 19:42:08 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:30:12 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	ft_find_sprites(t_map *map)
 		{
 			if (map->matrix[i][j] == 'X')
 			{
-				map->sprites[x].pos.x = i;
-				map->sprites[x].pos.y = j;
+				map->sprites[x].pos.x = i + 0.5;
+				map->sprites[x].pos.y = j + 0.5;
 				x++;
 			}
 		}
